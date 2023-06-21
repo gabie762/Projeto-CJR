@@ -1,76 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="partial_login.css">
-    <link rel="stylesheet" href="partial_header.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Login</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div id="cjr-img">
-            <button id="cjr-button">
-                <img src="cjr.png" alt="">
-            </button>
-        </div>
+      <div id="cjr-img">
+        <button id="cjr-button">
+          <img src="cjr.png" alt="" />
+        </button>
+      </div>
 
-
-        <div class="buttons-header">
-            <button class="buttons-header-style" id="criar-conta">
-                <a class="txt-botao" id="txt-botao-criar-conta" href="#">Criar Conta</a>
-            </button>
-            <button class="buttons-header-style" id="entrar">
-                <a class="txt-botao" id="txt-botao-entrar" href="#">Entrar</a>
-            </button>
-        </div>
+      <div class="buttons-header">
+        <button class="buttons-header-style" id="criar-conta">
+          <a class="txt-botao" id="txt-botao-criar-conta" href="#"
+            >Criar Conta</a
+          >
+        </button>
+        <button class="buttons-header-style" id="entrar">
+          <a class="txt-botao" id="txt-botao-entrar" href="#">Entrar</a>
+        </button>
+      </div>
     </header>
     <section class="login-page">
-        <div id="login-box">
-            <div id="login-img">
-                <img src="foto-perfil.png" alt="">
-            </div>
-            <form class="field-set" action="">
-                <div class="style-div-input">
-                    <div class="gray-input-box">
-                        <img id="img-input" src="img-input-login.png" alt="">
-                    </div>
-                    <input type="text" class="input-box" id="user-box" name="user" placeholder="Login">
-                </div>
-                <div class="style-div-input">
-                    <div class="gray-input-box">
-                        <img id="img-input" src="img-input-senha.png" alt="">
-                    </div>
-                    <input type="password" class="input-box" id="senha-box" name="senha" placeholder="Senha"> 
-                    <div>
-                        <img  id="eye-img" src="eye.png" alt="">
-                    </div>
-                    <script>
-                        let eyeicon = document.getElementById("eye-img");
-                        let password = document.getElementById("senha-box");
-                        eyeicon.onclick = function(){
-                            if (password.type=="password"){
-                                password.type = "text";
-                            } else {
-                                password.type= "password";
-                            }
-                        }
-                    </script>        
-                </div>
-            </form>
-
-            
-            <div class="forgot-pass">
-                <a id="forgot-pass" href="">
-                    <h3>Esqueceu a senha?</h3>
-                </a>
-            </div>
-
-            <button id="entrar-button">Entrar</button>
+      <div id="login-box">
+        <div id="login-img">
+          <img src="foto-perfil.png" alt="" />
         </div>
+        <form class="field-set" action="">
+          <div class="style-div-input">
+            <div class="gray-input-box">
+              <img id="img-input" src="img-input-login.png" alt="" />
+            </div>
+            <input
+              type="text"
+              class="input-box"
+              id="user-box"
+              name="user"
+              placeholder="Login"
+            />
+          </div>
+          <div class="style-div-input">
+            <div class="gray-input-box">
+              <img id="img-input" src="img-input-senha.png" alt="" />
+            </div>
+            <input
+              type="password"
+              class="input-box"
+              id="senha-box"
+              name="senha"
+              placeholder="Senha"
+            />
+            <div>
+              <img id="eye-img" src="eye.png" alt="" />
+            </div>
+            <script>
+              let eyeicon = document.getElementById("eye-img");
+              let password = document.getElementById("senha-box");
+              eyeicon.onclick = function () {
+                if (password.type == "password") {
+                  password.type = "text";
+                } else {
+                  password.type = "password";
+                }
+              };
+            </script>
+          </div>
+        </form>
+
+        <div class="forgot-pass">
+          <a id="forgot-pass" href="">
+            <h3>Esqueceu a senha?</h3>
+          </a>
+        </div>
+
+        <button id="entrar-button">Entrar</button>
+      </div>
     </section>
-</body>
+  </body>
 </html>
