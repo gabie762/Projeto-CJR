@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="partial_login.css">
+    <link rel="stylesheet" href="partial_header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -45,20 +45,20 @@
                         <img id="img-input" src="img-input-senha.png" alt="">
                     </div>
                     <input type="password" class="input-box" id="senha-box" name="senha" placeholder="Senha"> 
-                    <script>
-                        let eyeicon = document.getElementById("eye-img")
-                        let password = document.getElementById("senha-box")
-                        eyeicon.onclick = function(){
-                            if (password.type=="password"){
-                                password.type = "text"
-                            } else {
-                                password.type= "password"
-                            }
-                        }
-                    </script>        
                     <div>
                         <img  id="eye-img" src="eye.png" alt="">
                     </div>
+                    <script>
+                        let eyeicon = document.getElementById("eye-img");
+                        let password = document.getElementById("senha-box");
+                        eyeicon.onclick = function(){
+                            if (password.type=="password"){
+                                password.type = "text";
+                            } else {
+                                password.type= "password";
+                            }
+                        }
+                    </script>        
                 </div>
             </form>
 
