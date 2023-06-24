@@ -46,6 +46,7 @@ header {
   background: #d9d9d9;
   border-radius: 16px;
   border: 0;
+  cursor: pointer;
 }
 
 .txt-botao {
@@ -57,17 +58,35 @@ header {
 }
 #txt-botao-criar-conta {
   color: #222e50;
+  transition: 0.5s;
+}
+#txt-botao-criar-conta:hover{
+  color: #d9d9d9;
 }
 #txt-botao-entrar {
   color: #d9d9d9;
+  transition: 0.5s;
+}
+#txt-botao-entrar:hover{
+  color: #222e50;
 }
 
 #entrar {
   background-color: #222e50;
   color: #d9d9d9;
+  transition: 0.5s;
+}
+#entrar:hover{
+  background-color: transparent;
+  color: #222e50;
 }
 
 #criar-conta {
   background-color: transparent;
   color: #8bc34a;
+  transition: 0.5s;
+}
+#criar-conta:hover{
+  background-color: #222e50;
+  color: #d9d9d9;
 }
