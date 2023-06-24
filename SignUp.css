@@ -1,3 +1,8 @@
+* {
+    font-family: 'Inter';
+    font-weight: 700;
+}
+
 .register-page{
     background-color: #111E3A;
     min-height: 100vh;
@@ -6,27 +11,26 @@
 }
 
 #register-box{
-    position: absolute;
     width: 28%;
     height: 723px;
     padding: 20px 20px;
-    left: 49.15%;
+    margin-left: 55%;
     background: #222E50;
     align-content: center;
     align-items: center;
     justify-content: center;
     text-align: center;
     border-radius: 10px;
-    margin-top: 0%
-
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
 }
 
 #adicionar-img{
-    position: absolute;
     background-color: transparent;
     border-color: transparent;
-    top: 20%;
-    left: 55%;
+    margin-top: -10%;
+    margin-left: 30%;
 }
 
 
@@ -71,8 +75,7 @@
 
 .cjr-img{
     position: absolute;
-    width: 778px;
-    top: 451px;
+    width: 55%;
     top: 238px;
     left: 0px;
 }
