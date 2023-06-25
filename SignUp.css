@@ -23,6 +23,8 @@
     border-radius: 10px;
     margin-top: 1%;
     margin-bottom: 1%;
+    padding-left: 1px;
+    padding-right: 1px;
     
 }
 
@@ -39,7 +41,7 @@
     font-style: normal;
     border-color: transparent;
     margin-bottom: 10px;
-    width: 370px;
+    width: 85%;
     height: 59px;
     border-radius: 15px;
     background: #D9D9D9;
@@ -51,11 +53,12 @@
     font-style: normal;
     border-color: transparent;
     margin-bottom: 10px;
-    width: 370px;
+    width: 85%;
     height: 59px;
     border-radius: 15px;
     background: #D9D9D9;
     padding-left: 16px;
+    color: gray;
 }
 
 #genero{
@@ -64,7 +67,7 @@
 
 #register-button{
     background: #D9D9D9;
-    width:283px;
+    width: 75%;
     height: 50px;
     border-radius: 15px;
     color: #111E3E;
