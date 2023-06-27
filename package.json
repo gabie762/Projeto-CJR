@@ -1,0 +1,26 @@
+{
+  "name": "projeto-cjr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabie762/Projeto-CJR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabie762/Projeto-CJR/issues"
+  },
+  "homepage": "https://github.com/gabie762/Projeto-CJR#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "prisma": "^4.16.1"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.16.1"
+  }
+}
