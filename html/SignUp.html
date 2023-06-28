@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/SignUp.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/SignUp.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,75 +12,106 @@
       rel="stylesheet"
     />
     <title>Sign Up</title>
-</head>
-<body>
-  <header>
-    <div id="cjr-img">
-      <button id="cjr-button">
-        <img src="../imagens/cjr.png" alt="" />
-      </button>
-    </div>
-    
-    <div class="buttons-header" >
-      <a id="link-criar-conta" href="SignUp.html">
-        <button class="buttons-header-style" id="criar-conta">
-          <div class="txt-botao" id="txt-botao-criar-conta" href="SignUp.html">Criar Conta</div>
+  </head>
+  <body>
+    <header>
+      <div id="cjr-img">
+        <button id="cjr-button">
+          <img src="../imagens/cjr.png" alt="" />
         </button>
-      </a>
-      <a id="link-entrar" href="login.html">
-        <button class="buttons-header-style" id="entrar">
-          <div class="txt-botao" id="txt-botao-entrar" href="login.html">Entrar</div>
-        </button>
-      </a>
-    </div>
-  </header>
+      </div>
+
+      <div class="buttons-header">
+        <a id="link-criar-conta" href="/criar-conta">
+          <button class="buttons-header-style" id="criar-conta">
+            <div
+              class="txt-botao"
+              id="txt-botao-criar-conta"
+              href="/criar-conta"
+            >
+              Criar Conta
+            </div>
+          </button>
+        </a>
+        <a id="link-entrar" href="/">
+          <button class="buttons-header-style" id="entrar">
+            <div class="txt-botao" id="txt-botao-entrar" href="/">Entrar</div>
+          </button>
+        </a>
+      </div>
+    </header>
     <section class="register-page">
-        <div id="register-box">
-            <div id="register-img">
-                <img src="../imagens/foto-perfil.png" alt="">
-            </div>
-            <div id="img-button">
-                <button id="adicionar-img">
-                    <img src="../imagens/img-add.png" alt="">
-                </button>
-            </div>
-            <form action="">
-
-                <br/>
-
-                <input type="text" class="input-box" id="name-box" name="nome" placeholder="Nome">
-
-                <br/>
-
-                <select name="genero" id="genero-box">
-                    <option value="" id="genero">Gênero</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="feminino">Feminino</option>
-                    <option value="outro">Outro</option>
-                </select>
-
-                <br/>
-
-                <input type="text" class="input-box" id="cargo-box" name="cargo" placeholder="Cargo">
-
-                <br/>
-
-                <input type="email" class="input-box" id="email-box" name="email" placeholder="Email">
-
-                <br/>
-
-                <input type="password" class="input-box" id="password" name="password" placeholder="Senha">
-            </form>
-
-            <br/>
-
-            <p>Possui conta? <span><a href="login.html">Acesse aqui</a></span></p>
-
-            <br/>
-
-            <button id="register-button">Cadastrar</button>
+      <div id="register-box">
+        <div id="register-img">
+          <img src="../imagens/foto-perfil.png" alt="" />
         </div>
-        <img class="cjr-img" src="../imagens/cjr-grande.png" alt="">
+        <div id="img-button">
+          <button id="adicionar-img">
+            <img src="../imagens/img-add.png" alt="" />
+          </button>
+        </div>
+        <form action="">
+          <br />
+
+          <input
+            type="text"
+            class="input-box"
+            id="name-box"
+            name="nome"
+            placeholder="Nome"
+          />
+
+          <br />
+
+          <select name="genero" id="genero-box">
+            <option value="" id="genero">Gênero</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+
+          <br />
+
+          <input
+            type="text"
+            class="input-box"
+            id="cargo-box"
+            name="cargo"
+            placeholder="Cargo"
+          />
+
+          <br />
+
+          <input
+            type="email"
+            class="input-box"
+            id="email-box"
+            name="email"
+            placeholder="Email"
+          />
+
+          <br />
+
+          <input
+            type="password"
+            class="input-box"
+            id="password"
+            name="password"
+            placeholder="Senha"
+          />
+        </form>
+
+        <br />
+
+        <p>
+          Possui conta? <span><a href="/">Acesse aqui</a></span>
+        </p>
+
+        <br />
+
+        <button id="register-button">Cadastrar</button>
+      </div>
+      <img class="cjr-img" src="../imagens/cjr-grande.png" alt="" />
     </section>
-    </body>
+  </body>
 </html>
