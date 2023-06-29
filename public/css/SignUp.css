@@ -74,6 +74,7 @@
     font-weight: 700;
     font-size: medium;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .cjr-img{
