@@ -20,7 +20,8 @@ app.use(express.static("public"));
 
 //Login
 app.get("/", (req, res) => {
-  res.render("login");
+  let logIn = false;
+  res.render("login",{logIn:logIn});
 });
 
 app.post("/", (req, res) => {
@@ -37,7 +38,8 @@ app.post("/", (req, res) => {
 
 //Recuperar Senha
 app.get("/recuperar", (req, res) => {
-  res.render("recuperacao");
+  let logIn = false;
+  res.render("recuperacao",{logIn:logIn});
 });
 
 
@@ -54,7 +56,8 @@ app.post("/recuperar", (req, res)=>{
 
 //Criar Conta
 app.get("/criar-conta", (req, res) => {
-  res.render("SignUp");
+  let logIn = false;
+  res.render("SignUp",{logIn:logIn});
 });
 
 app.post("/criar-conta", async (req, res)=>{
@@ -72,13 +75,14 @@ app.post("/criar-conta", async (req, res)=>{
 
 //Perfil Logado
 app.get("/perfil", (req, res)=>{
-  res.render("perfil")
+  let logIn = false;
+  res.render("perfil",{logIn:logIn})
 })
 
 
 //Feed com post aberto
 app.get("/feed", (req,res)=>{
-  let logIn = true;
+  let logIn = false;
   res.render("feed", {logIn:logIn})
 })
 
