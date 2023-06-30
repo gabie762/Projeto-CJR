@@ -8,3 +8,84 @@ section{
     background-color: #111e3e;
     min-height: 939px;
 }
+
+
+
+
+#criar-post{
+    cursor: pointer;
+    background-color: #8bc34a;
+    color: #ffffff;
+    width: 143px;
+    height: 46px;
+    font-family: "Inter";
+    border: 0px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 12px;
+}
+
+p{
+    color:#FFFFFF;
+}
+
+
+.posts{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    border-left: solid 1px #6f6f6f;
+    border-right: solid 1px #6f6f6f;
+    padding-bottom: 32px;
+    min-height: 939px;
+    border-bottom:solid 1px #6f6f6f;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+#pubs{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.post{
+    background-color: #222E50;
+    border-radius: 18px;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+#post-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-post{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#post-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#created-at{
+    color:#6f6f6f;
+    font-size: 16px;
+}
+#post-content{
+    margin-left: 50px;
+}
+
+.comment-img{
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+}

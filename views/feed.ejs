@@ -1,7 +1,11 @@
-<%- include("header.ejs", {title:"Feed"}) %>
+<%- include("header.ejs", {title:"Feed", logIn:logIn}) %>
 
         <section>
+
             <div class="posts">
+                <% if (logIn){%>
+                    <button type="button" id="criar-post">Criar Publicação</button>
+                <%}%>
                 <div class="post">
                     <div id="post-user-infos">
                         <img id="img-post" src="../imagens/image 1.png" alt="">
@@ -13,6 +17,9 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur inventore incidunt quam eos tenetur, eum alias! Id possimus non voluptas beatae cumque dolorum perspiciatis nemo ipsam natus, numquam voluptate eveniet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, aspernatur accusantium delectus voluptatum ipsa at minima totam ipsam magni reiciendis. Obcaecati rerum eum saepe repellat asperiores officiis consequatur atque eaque!
                         </p>  
                     </div>
+                    
+                    <img id="comment-img" src="../imagens/comment.png" alt="">
+                    
                 </div>
                 <div class="post">
                     <div id="post-user-infos">
@@ -25,6 +32,9 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero accusantium fugiat necessitatibus animi quos tenetur perspiciatis accusamus officia. Ut, explicabo! Earum ipsa sunt delectus rem eius animi, ut dolor cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum deserunt corporis sequi odit molestias illum dicta corrupti quisquam ut praesentium. Odio eligendi porro minus esse! Labore ab architecto odit perspiciatis.
                         </p>  
                     </div>
+                    
+                    <img id="comment-img" src="../imagens/comment.png" alt="">
+                    
                 </div>
                 <div class="post">
                     <div id="post-user-infos">
@@ -37,6 +47,9 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ea neque expedita sunt quod sit dolores, excepturi, aliquam natus praesentium rerum molestias reprehenderit error vero atque est hic odio. Non?
                         </p>  
                     </div>
+                    
+                    <img id="comment-img" src="../imagens/comment.png" alt="">
+                    
                 </div>
             </div>
         </section>

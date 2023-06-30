@@ -78,7 +78,8 @@ app.get("/perfil", (req, res)=>{
 
 //Feed com post aberto
 app.get("/feed", (req,res)=>{
-  res.render("feed")
+  let logIn = true;
+  res.render("feed", {logIn:logIn})
 })
 
 app.listen(PORT, () => {
