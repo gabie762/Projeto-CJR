@@ -10,23 +10,17 @@ const path = require("path");
 const initRouter = require("./routes/app");
 
 //app.use("/", initRouter);
-
-app.use(session({ secret: "lafduiuliucsacsoajf" }));
+app.use(express.static(__dirname + '/public'))
+//app.use(express.static('./public'));
+app.set('view engine', 'ejs');
+app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
 //Login
 app.get("/", (req, res) => {
-
-  /*
-  if (req.session.login){
-    res.sendFile(path.join(__dirname + "/html/pagina-inicial.html"));
-  }else{
-    res.sendFile(path.join(__dirname + "/html/login.html"));
-  }
-  */
-  res.sendFile(path.join(__dirname + "/html/login.html"));
+  res.render("login");
 });
 
 app.post("/", (req, res) => {
@@ -43,7 +37,7 @@ app.post("/", (req, res) => {
 
 //Recuperar Senha
 app.get("/recuperar", (req, res) => {
-  res.sendFile(path.join(__dirname + "/html/recuperacao.html"));
+  res.render("recuperacao");
 });
 
 
@@ -60,7 +54,7 @@ app.post("/recuperar", (req, res)=>{
 
 //Criar Conta
 app.get("/criar-conta", (req, res) => {
-  res.sendFile(path.join(__dirname + "/html/SignUp.html"));
+  res.render("SignUp");
 });
 
 app.post("/criar-conta", async (req, res)=>{

@@ -1,0 +1,58 @@
+<%- include('./header.ejs', {title: "Login"})%>
+    <section class="login-page">
+      <div id="login-box">
+        <div id="login-img">
+          <img src="../imagens/foto-perfil.png" alt="" />
+        </div>
+        <form class="field-set" method="POST" action="">
+          <div class="style-div-input">
+            <div class="gray-input-box">
+              <img id="img-input" src="../imagens/img-input-login.png" alt="" />
+            </div>
+            <input
+              type="text"
+              class="input-box"
+              id="user-box"
+              name="user"
+              placeholder="Login"
+            />
+          </div>
+          <div class="style-div-input">
+            <div class="gray-input-box">
+              <img id="img-input" src="../imagens/img-input-senha.png" alt="" />
+            </div>
+            <input
+              type="password"
+              class="input-box"
+              id="senha-box"
+              name="senha"
+              placeholder="Senha"
+            />
+            <div>
+              <img id="eye-img" src="../imagens/eye.png" alt="" />
+            </div>
+            <script>
+              let eyeicon = document.getElementById("eye-img");
+              let password = document.getElementById("senha-box");
+              eyeicon.onclick = function () {
+                if (password.type == "password") {
+                  password.type = "text";
+                } else {
+                  password.type = "password";
+                }
+              };
+            </script>
+          </div>
+          <div class="forgot-pass">
+            <a id="forgot-pass" href="/recuperar">
+              <h3>Esqueceu a senha?</h3>
+            </a>
+          </div>
+  
+          <button type="submit" id="entrar-button">Entrar</button>
+        </form>
+
+      </div>
+    </section>
+  </body>
+</html>
