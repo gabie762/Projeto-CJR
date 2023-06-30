@@ -75,6 +75,12 @@ app.get("/perfil", (req, res)=>{
   res.render("perfil")
 })
 
+
+//Feed com post aberto
+app.get("/feed", (req,res)=>{
+  res.render("feed")
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
