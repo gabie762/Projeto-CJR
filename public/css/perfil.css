@@ -1,0 +1,131 @@
+*{
+    font-family: "Inter";
+}
+
+section{
+    background-color: #111e3e;
+    min-height: 939px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-left: 27.5%;
+    padding-right: 27.5%;
+}
+
+
+.infos-perfil{
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 15px;
+    padding-top: 60px;
+    align-items: center;
+    justify-content: space-between;
+    border:solid 1px;
+    border-color: #6f6f6f;
+    position: relative;
+    bottom: 9.525rem;
+}
+
+
+#img-perfil{
+    width: 120px;
+    height: 120px;
+    border-radius:50% ;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+#bg-img{
+    height: 150px;
+    width: 100%;
+}
+
+p{
+    color:#FFFFFF;
+}
+
+#editar-perfil{
+    background-color: #111e3e;
+    color: #FFFFFF;
+    border-radius: 10px;
+    width: 120px;
+    height: 35px;
+    font-weight: 600;
+    border: solid 2px #000000;
+    cursor: pointer;
+}
+
+#username{
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.cargo{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.email{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.posts{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    border-left: solid 1px #6f6f6f;
+    border-right: solid 1px #6f6f6f;
+    padding-bottom: 300px;
+    border-bottom:solid 1px #6f6f6f;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    bottom: 9.525rem;
+    
+}
+
+#pubs{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.post{
+    background-color: #222E50;
+    border-radius: 18px;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+}
+#post-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-post{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#post-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#created-at{
+    color:#6f6f6f;
+    font-size: 16px;
+}
+#post-content{
+    margin-left: 35px;
+}

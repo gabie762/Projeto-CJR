@@ -6,8 +6,8 @@ const session = require("express-session");
 
 const bodyParser = require("body-parser");
 const app = express();
-const path = require("path");
-const initRouter = require("./routes/app");
+
+//const initRouter = require("./routes/app");
 
 //app.use("/", initRouter);
 app.use(express.static(__dirname + '/public'))
@@ -68,6 +68,11 @@ app.post("/criar-conta", async (req, res)=>{
     console.log(err);
     res.status(500).send("Fatal: error")
   }
+})
+
+//Perfil Logado
+app.get("/perfil", (req, res)=>{
+  res.render("perfil")
 })
 
 app.listen(PORT, () => {
