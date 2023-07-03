@@ -1,4 +1,3 @@
-//OBS: O QUE ESTÁ COMENTADO ESTÁ A ESPERA DO BANCO DE DADOS PARA SE INTEGRAR AO SISTEMA
 const PORT = 3000;
 
 const express = require("express");
@@ -14,8 +13,8 @@ app.use(express.static(__dirname + '/public'))
 //app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
 
 //Login
@@ -82,7 +81,13 @@ app.get("/perfil", (req, res)=>{
 
 //Feed com post aberto
 app.get("/feed", (req,res)=>{
-  let logIn = false;
+  let logIn = true;
+  res.render("feed", {logIn:logIn})
+})
+
+app.post("/feed", (req,res)=>{
+  const {log_out} = req.body;
+  let logIn = log_out;
   res.render("feed", {logIn:logIn})
 })
 

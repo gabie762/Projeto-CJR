@@ -113,3 +113,8 @@ header {
 #sair{
   cursor: pointer;
 }
+
+#logout{
+  background-color: transparent;
+  border: 0px;
+}

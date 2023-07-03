@@ -84,8 +84,10 @@ p{
     margin-left: 50px;
 }
 
-.comment-img{
+#comment-img{
     margin-top: 20px;
     margin-left: 50px;
     cursor: pointer;
 }
+
+

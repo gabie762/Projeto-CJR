@@ -55,15 +55,15 @@
           <span id="user">Joãzinho Gamer</span>
           
           <img id="img-logado" src="../imagens/image 1.png" alt="">
-          
-          <img id="sair" src="../imagens/log-out.png" alt="">
 
-          <script>
-            let sair = document.getElementById("sair");
-            sair.onclick = function(){
-              logIn = false;
-            }
-          </script>
+          <form method="POST">
+            <input type="hidden" name="log_out" value=false>
+            <button type="submit" id="logout">
+              <img id="sair" src="../imagens/log-out.png" alt="">
+            </button>
+          </form>
+
+          
         </div>
       <%}%>
     </header>
