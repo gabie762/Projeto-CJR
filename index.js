@@ -83,12 +83,13 @@ app.get("/perfil", (req, res)=>{
 app.get("/feed", (req,res)=>{
   let logIn = true;
   res.render("feed", {logIn:logIn})
+  
+  await 
 })
 
-app.post("/feed", (req,res)=>{
+app.put("/feed", (req,res)=>{
   const {log_out} = req.body;
-  let logIn = log_out;
-  res.render("feed", {logIn:logIn})
+  res.render("login", {logIn:log_out})
 })
 
 app.listen(PORT, () => {

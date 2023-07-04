@@ -33,6 +33,7 @@
     border-color: transparent;
     margin-top: -10%;
     margin-left: 30%;
+    cursor: pointer;
 }
 
 
@@ -62,7 +63,7 @@
 }
 
 #genero{
-    color: gray;
+    color: black;
 }
 
 #register-button{

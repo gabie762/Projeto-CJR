@@ -1,17 +1,17 @@
 <%- include("header.ejs", {title: "Criar Conta",logIn:logIn})%>
     <section class="register-page">
       <div id="register-box">
+        <form id="form" method="POST">
         <div id="register-img">
           <img src="../imagens/foto-perfil.png" alt="" />
         </div>
         <div id="img-button">
-          <button id="adicionar-img">
+          <div id="adicionar-img">
             <img src="../imagens/img-add.png" alt="" />
-          </button>
+          </div>
         </div>
-        <form id="form" method="POST">
-          <br />
-
+        <br />
+        
           <input
             type="text"
             class="input-box"
@@ -24,9 +24,9 @@
 
           <select name="genero" id="genero-box">
             <option value="" id="genero">Gênero</option>
-            <option value="masculino">Masculino</option>
-            <option value="feminino">Feminino</option>
-            <option value="outro">Outro</option>
+            <option value="masculino" id="genero">Masculino</option>
+            <option value="feminino" id="genero">Feminino</option>
+            <option value="outro" id="genero">Outro</option>
           </select>
 
           <br />

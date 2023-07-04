@@ -9,3 +9,47 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+
+model User{
+  id    Int @id @default(autoincrement())
+  username String @unique
+  senha String 
+  gender String
+  email String @unique
+  c   Cargo  @relation(fields: [cargo], references: [nome])
+  cargo String
+  admin Boolean
+  created_at  DateTime @default(now())
+  posts Post[]
+  comments Comments[]
+  
+}
+
+model Post{
+  post_id Int @id @default(autoincrement())
+  user User  @relation(fields: [user_id], references: [id])
+  user_id Int
+  content String
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+
+}
+
+
+model Cargo{
+  id Int @id @default(autoincrement())
+  nome String @unique
+  nucleo String 
+  createdAt DateTime @default(now())
+  user User[]
+}
+
+model Comments {
+  id            Int      @id @default(autoincrement())
+  post_id       Int
+  user          User     @relation(fields: [user_id], references: [id])
+  user_id       Int     
+  content       String
+}
+
