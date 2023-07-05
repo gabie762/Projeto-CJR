@@ -12,24 +12,24 @@ datasource db {
 
 
 model User{
-  id    Int @id @default(autoincrement())
+  id    String @id @default(uuid())
   username String @unique
   senha String 
   gender String
   email String @unique
-  c   Cargo  @relation(fields: [cargo], references: [nome])
   cargo String
   admin Boolean
   created_at  DateTime @default(now())
   posts Post[]
   comments Comments[]
+  Cargo Cargo[]
   
 }
 
 model Post{
   post_id Int @id @default(autoincrement())
   user User  @relation(fields: [user_id], references: [id])
-  user_id Int
+  user_id String
   content String
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
@@ -39,17 +39,17 @@ model Post{
 
 model Cargo{
   id Int @id @default(autoincrement())
+  user User @relation(fields: [nome], references: [username])
   nome String @unique
   nucleo String 
   createdAt DateTime @default(now())
-  user User[]
 }
 
 model Comments {
   id            Int      @id @default(autoincrement())
   post_id       Int
   user          User     @relation(fields: [user_id], references: [id])
-  user_id       Int     
+  user_id       String     
   content       String
 }
 
