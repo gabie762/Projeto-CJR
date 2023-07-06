@@ -1,0 +1,172 @@
+*{
+  font-family: 'Inter';
+  color:#FFF;
+}
+
+.user-page {
+  width: 40.375rem;
+  height: 100vh;
+  margin: auto;
+  background-color: blueviolet;
+}
+
+.user-info{
+  background-color: chocolate;
+  width: auto;
+  height: 23%;
+  overflow: hidden;
+}
+
+.profile-page {
+  background-color: #111e3e;
+  height: 100vh;
+  padding-top: 1px;
+  overflow: scroll;
+
+}
+
+.user-header{
+  width: 40.375rem;
+  height: 9.438rem;
+  background: #222E50;
+  position: relative;
+  margin: auto;
+  display: flex;
+}
+
+.user-icon{
+  width: 9.375rem;
+  height: 9.375rem;
+  position: relative;
+  border-radius: 50%;
+  margin: left;
+  left: 5%;
+  top: 25%;
+}
+
+#user-name{
+  width:8.875rem;
+  height: 1rem;
+  position: relative;
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  left: 3rem;
+  top: 5rem;
+}
+
+#building-icon{
+  width: 23px;
+  height: 23px;
+  position: relative;
+  top: 5.5rem;
+  left: -7rem;
+}
+
+.user-function{
+  display: flex;
+  position: relative;
+  top: 3rem;
+  left: 4.7rem;
+  width: 79px;
+  height: 16px;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+#email-icon{
+  width: 22px;
+  height: 22px;
+  position: relative;
+  top: 3.5rem;
+  left: 3rem;
+}
+
+.user-email{
+  display: flex;
+  width: 203px;
+  height: 16px;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  top: 2rem;
+  left: 4.7rem;
+}
+
+#line{
+  width: 100%;
+  height: 1px;
+  color:#7E7E7E;
+  position: relative;
+  top:0rem;
+}
+
+.user-feed{
+  width: auto;
+  height: 100%;
+  position: relative;
+  /*overflow-y: auto;*/
+  margin: auto;
+  border-right: 1px solid #7E7E7E;
+  border-left: 1px solid #7E7E7E;
+  background-color: aquamarine;
+}
+
+#publicacoes{
+  color: #FFF;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  position: relative;
+  top: 1rem;
+  left: 1rem;
+}
+
+.profile-edit-btn{
+  width: 154px;
+  height: 48px;
+  left: 28.438rem;
+  top: 0.75rem;
+  border-radius: 16px;
+  border: 1px solid #000;
+  background: #111E3E;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+  color: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+.posts{
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  /*border-left: solid 1px #6f6f6f;
+  border-right: solid 1px #6f6f6f;*/
+  padding-bottom: 32px;
+  position: absolute;
+  top:0rem;
+  height: 100%;
+  width: 100%;
+  border-bottom:solid 1px #6f6f6f;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /*background-color: #FFF000;*/
+}
+
+.post{
+  background-color: #222E50;
+  border-radius: 18px;
+  padding-top:10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
