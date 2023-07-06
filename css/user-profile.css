@@ -7,11 +7,11 @@
   width: 40.375rem;
   height: 100vh;
   margin: auto;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 .user-info{
-  background-color: chocolate;
+  /* background-color: chocolate; */
   width: auto;
   height: 23%;
   overflow: hidden;
@@ -111,7 +111,7 @@
   margin: auto;
   border-right: 1px solid #7E7E7E;
   border-left: 1px solid #7E7E7E;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 #publicacoes{
