@@ -128,11 +128,18 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
 
 
 //Perfil Logado
-app.get("/perfil", (req, res)=>{
+app.get("/perfil/:id", async (req, res)=>{
+  let userId = req.path.split("/")[2];
+  
+  const user = await prisma.user.findUnique({
+    where: {id: userId},
+    include: {posts:true, comments:true}
+  })
+  console.log(user)
   try{
     let logIn = req.session.authenticated
     let username = req.session.user
-    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img})
+    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:user})
   } catch(err){
     let logIn = false
     res.render("userProfile",{logIn:logIn})
@@ -150,8 +157,6 @@ app.get("/feed", async (req,res)=>{
     console.log(req.session.authenticated)
     let username = req.session.user
     let userImg = req.session.img
-    
-    console.log(posts)
     res.render("feed", {logIn:isAuthenticated, username: username, img: userImg, posts:posts})
   } catch(err){
     res.render("/feed", {logIn:false, username: null, img:null, posts:posts})
@@ -174,14 +179,33 @@ app.post("/feed", async (req, res)=> {
 
 
 //Comentarios
-app.get("/comentarios", (req,res)=>{
-  const isAuthenticated = req.session.authenticated || false
-  console.log(req.session.authenticated)
-  let username = req.session.user
-  let userImg = req.session.img
-  console.log(req.session.user)
-  res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg})
+app.get("/comentarios/:id", async (req,res)=>{
+  let postId = parseInt(req.path.split("/")[2]);
+  
+  const post = await prisma.post.findUnique({
+    where: {id: postId},
+    include: {user:true, comments:true}
+  })
+  console.log(post)
+  try{
+    
+    const isAuthenticated = req.session.authenticated || false
+    console.log(req.session.authenticated)
+
+
+    
+    let username = req.session.user
+    let userImg = req.session.img
+    
+    res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg, post:post})
+  }catch(err){
+    res.render("comentarios", {logIn:false, username: null, img: null, post:post})
+
+  }
 })
+
+
+
 
 
 //Criar Post

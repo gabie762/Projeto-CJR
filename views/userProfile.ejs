@@ -1,5 +1,6 @@
-<%- include("header.ejs", {title:"Perfil", logIn, username, img}) %>
+<%- include("header.ejs", {title:"Perfil", logIn, username, img, user}) %>
 <section >
+  <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
 
     <div class="user-page">
       <div class="user-header">
@@ -8,28 +9,36 @@
       </div>
     </div>
     <div class="user-info">
-      <h1 id="user-name">Joazin Gamer</h1>
+      <h1 id="user-name"><%= user.username%></h1>
       <button class="profile-edit-btn">Editar Perfil</button>
       <img src="../imagens/cargo-img.png" id="building-icon">
-      <p class="user-function">aaa</p>
+      <p class="user-function"><%= user.cargo%></p>
       <img src="../imagens/email-img.png" id="email-icon">
-      <p class="user-email">joazin.gamer@ingressospraTheErasTourREALOFICIALNAOEHCAMBISTA.com</p>
+      <p class="user-email"><%=user.email%></p>
     </div>
     <div class="user-feed">
       <hr id="line" size="0.5px">
       <h3 id="publicacoes">Publicações</h3>
       <br>
         <div class="posts">
-          <div class="post">COMO Q TIRA AS LETRAS GRAMDES</div>
-          <div class="post">baticabau au falou o meu amor bau bau bau o meu coracao bateu tchitchitchuaaa nunca mais parouu isso quer dizer que vc me amo</div>
-          <div class="post">To be fair, you need to have a very high IQ to understand Taylor Swift. The lyricism is very subtle and without a solid grasp of Transformational Music Theory most of the lyrics will go over a typical musician's head. There's also Taylor's deterministic outlook, which is deftly woven into her characteristic — her personal philosophy draws from Leo Tolstoy's "Anna Karenina," for instance. why bother with Johann Bach's 'Brandenburg Concerto No. 3' when "haters gonna hate hate hate" is just as good? Taylor Swift understands this stuff; she has the intellectual capacity to truly appreciate the depth of "Bad Blood", to realize it's not just pettiness is to say something deep about LIFE.
-
-            As a consequence people who dislike Taylor Swift truly ARE idiots- of course they wouldn't appreciate, for instance, the depth in Taylor's existential catchphrase "look what you just made me do/ look what you just made me do," which itself is a cryptic reference to Turgenev's Russian epic Fathers and Sons. I'm smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion as Taylor Swift's genius wit unfolds itself on their radio speakers. What fools.. how I pity them. 😂
-            
-            And yes, by the way, I DO have a "Trust me, I'm Swiftie" tattoo. And no, you cannot see it. It's for the ladies' eyes only- and even then they have to demonstrate that they're within pi + e (=5) IQ points of my own (preferably lower beforehand. Nothing personnel kid 😎</div>
+          <%user.posts.reverse().forEach((post)=>{%>
+            <div class="post">
+              <div id="post-user-infos">
+                  <img id="img-post" src="../imagens/image 1.png" alt="">
+                  <p id="post-owner"><%=user.username%></p>
+                  <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
+                  </div>
+                  <div id="post-content">
+                      <p>
+                        <%=post.content%>
+                      </p>  
+              </div>
+          </div>
+          <%})%>
           </div>
   </div>
+  </div>
 
-</section>
-</body>
+  </section>
+  </body>
 </html>

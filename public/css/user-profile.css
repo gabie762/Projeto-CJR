@@ -7,6 +7,9 @@
   width: 40.375rem;
   min-height: 100vh;
   margin: auto;
+  border-left: 1px solid #6f6f6f;
+  border-right: 1px solid #6f6f6f;
+  
   /* background-color: blueviolet; */
 }
 
@@ -20,14 +23,16 @@
   width: auto;
   height: 23%;
 
-  border-left: 1px solid #6f6f6f;
-  border-right: 1px solid #6f6f6f;
+  
 }
 
 section{
   background-color: #111e3e;
   min-height: 939px;
   padding-top: 1px;
+  min-height: 100vh;
+  margin: auto;
+  
 
 }
 
@@ -179,4 +184,30 @@ section{
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 10px;
+}
+
+#post-user-infos{
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+  align-items: center;
+}
+
+#img-post{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+#post-owner{
+  font-weight: 700;
+  font-size: 16px;
+}
+
+#created-at{
+  color:#6f6f6f;
+  font-size: 16px;
+}
+#post-content{
+  margin-left: 35px;
 }

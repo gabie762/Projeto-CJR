@@ -13,8 +13,11 @@
                 <div class="post">
                     <div id="post-user-infos">
                         <img id="img-post" src="../imagens/image 1.png" alt="">
-                        <p id="post-owner"><%= post.user.username%></p>
-                        <% const meses = ["Jan", "Fev", "Mar", "Abr","Mai", "Jun", "Jul", "Ago","Set", "Out", "Nov", "Dez"]; %>
+                        <a href="/perfil/<%=post.user.id%>" id="link-name">
+                            <p id="post-owner"><%= post.user.username%></p>
+
+                        </a>
+                        <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
                         <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %></p>
                     </div>
                     <div id="post-content">
@@ -22,7 +25,7 @@
                             <%=post.content%>
                         </p>  
                     </div>
-                    <a href="/comentarios">
+                    <a href="/comentarios/<%=post.id%>">
                         <img id="comment-img" src="../imagens/comment.png" alt="">
                     </a>
                 </div>

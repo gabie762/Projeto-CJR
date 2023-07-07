@@ -44,6 +44,11 @@ p{
     
 }
 
+#link-name{
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #pubs{
     font-weight: 700;
     font-size: 15px;
