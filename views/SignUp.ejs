@@ -1,14 +1,22 @@
-<%- include("header.ejs", {title: "Criar Conta",logIn:logIn})%>
+<%- include("header.ejs", {title: "Criar Conta",logIn})%>
     <section class="register-page">
       <div id="register-box">
-        <form id="form" method="POST">
+        <form id="form" method="POST" enctype="multipart/form-data">
         <div id="register-img">
           <img src="../imagens/foto-perfil.png" alt="" />
         </div>
         <div id="img-button">
           <div id="adicionar-img">
-            <img src="../imagens/img-add.png" alt="" />
+              <input name="userImg" id="input-img" type="file" accept="image/png, image/jpeg, image/jpg">
+              <img id="user-img" src="../imagens/img-add.png" alt="" />
           </div>
+          <script>
+            let img = document.getElementById("user-img");
+            let input = document.getElementById("input-img");
+            img.onclick = function() {
+              input.click();
+            };
+          </script>
         </div>
         <br />
         

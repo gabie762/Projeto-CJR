@@ -49,6 +49,16 @@
     padding-left: 16px;
 }
 
+#input-img{
+    color:transparent;
+    background-color: transparent;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+}
+
 #genero-box{
     font-family: 'Inter';
     font-style: normal;
@@ -84,3 +94,11 @@
     top: 238px;
     left: 0px;
 }
+
+
+
+
+  
+  
+  
+  

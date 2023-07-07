@@ -11,9 +11,11 @@
     <% } else if (title=="Criar Conta"){%>
     <link rel="stylesheet" href="/css/SignUp.css" type="text/css">
     <%}else if (title=="Perfil"){%>
-    <link rel="stylesheet" href="/css/perfil.css" type="text/css">
+    <link rel="stylesheet" href="/css/user-profile.css" type="text/css">
     <%}else if (title=="Feed"){%>
     <link rel="stylesheet" href="/css/feed.css" type="text/css">
+    <%}else if (title=="Comentarios"){%>
+    <link rel="stylesheet" href="/css/comentarios.css" type="text/css">
     <%}%>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,11 +54,11 @@
       </div>
       <%}else {%>
         <div class="logado">
-          <span id="user">Joãzinho Gamer</span>
+          <span id="user"><%= username %></span>
           
-          <img id="img-logado" src="../imagens/image 1.png" alt="">
+          <img id="img-logado" src=<%=img%> alt="">
 
-          <form method="PUT">
+          <form method="post">
             <input type="hidden" name="log_out" value=false>
             <button type="submit" id="logout">
               <img id="sair" src="../imagens/log-out.png" alt="">

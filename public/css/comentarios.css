@@ -1,0 +1,156 @@
+*{
+    font-family: "Inter";
+}
+
+section{
+    padding-left: 27.5%;
+    padding-right: 27.5%;
+    background-color: #111e3e;
+    min-height: 939px;
+}
+#arrow{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+.container{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid 1px #6f6f6f;
+    min-height: 939px;
+    
+}
+
+.post-page{
+    background-color: #222E50;
+    padding-top: 15px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    
+}
+
+
+
+p{
+    color:#FFFFFF;
+}
+
+
+
+
+#pubs{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.post{
+    background-color: transparent;
+    border-top-left-radius:18px ;
+    border-top-right-radius: 18px;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+#post-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-post{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#post-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#created-at{
+    color:#6f6f6f;
+    font-size: 16px;
+}
+#post-content{
+    margin-left: 50px;
+}
+
+#comment-img{
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+
+.comment{
+    background-color: transparent;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    
+    
+}
+
+#b-top{
+    border-bottom: #6f6f6f 1px solid;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#comment-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-comment{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#comment-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#comment-content{
+    margin-left: 50px;
+}
+
+.comment-space{
+    background-color: #19192D;
+    margin-top: 10%;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    min-height: 130px;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-btn{
+    width: 160px;
+    min-height: 45px;
+    color: #19192D;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
