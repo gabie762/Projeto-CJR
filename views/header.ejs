@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/header.css" type="text/css">
+    <% if(title == "Login") {%>
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+    <% } else if (title=="Recuperação de Senha"){%>
+    <link rel="stylesheet" href="/css/recuperacao.css" type="text/css">
+    <% } else if (title=="Criar Conta"){%>
+    <link rel="stylesheet" href="/css/SignUp.css" type="text/css">
+    <%}else if (title=="Perfil"){%>
+    <link rel="stylesheet" href="/css/user-profile.css" type="text/css">
+    <%}else if (title=="Feed"){%>
+    <link rel="stylesheet" href="/css/feed.css" type="text/css">
+    <%}else if (title=="Comentarios"){%>
+    <link rel="stylesheet" href="/css/comentarios.css" type="text/css">
+    <%}else if (title=="make post"){%>
+      <link rel="stylesheet" href="/css/post.css" type="text/css">
+      <%}%>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <header>
+      <div id="cjr-img">
+        <a href="/feed">
+          <button id="cjr-button">
+            <img src="../imagens/cjr.png" alt="" />
+          </button>
+        </a>
+      </div>
+
+      <% if (!logIn){%>
+      <div class="buttons-header">
+        <a id="link-criar-conta" href="/criar-conta">
+          <button class="buttons-header-style" id="criar-conta">
+            <div
+              class="txt-botao"
+              id="txt-botao-criar-conta"
+              href="/criar-conta"
+            >
+              Criar Conta
+            </div>
+          </button>
+        </a>
+        <a id="link-entrar" href="/">
+          <button class="buttons-header-style" id="entrar">
+            <div class="txt-botao" id="txt-botao-entrar" href="/">Entrar</div>
+          </button>
+        </a>
+      </div>
+      <%}else {%>
+        <div class="logado">
+          <span id="user"><%= username %></span>
+          
+          <img id="img-logado" src="data:image/jpeg;base64, <%=img%>"" alt="">
+
+          <form action="/logout" method="" id="form">
+            <input type="hidden" name="log_out" value=false>
+            <button type="submit" id="logout">
+              <img id="sair" src="../imagens/log-out.png" alt="">
+            </button>
+            <script>
+              let form = document.getElementById("form");
+              let logout = document.getElementById("logout");
+
+              logout.onclick = function(){
+                form.method = "POST";
+              }
+            </script>
+          </form>
+
+          
+        </div>
+      <%}%>
+    </header>

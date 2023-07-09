@@ -1,0 +1,33 @@
+<%- include("header.ejs", {title:"make post", logIn, username, img})%>
+
+<div class="section">
+
+    <form method="post">
+        <div class="container">
+            
+            <div class="content">
+                <div class="options">
+                    
+                </div>
+                <div class="criar-post">
+                    <input name="conteudo" type="text" id="criar-post">
+                </div>
+            </div>
+            
+            <div class="post-btns">
+
+                <a href="/feed">
+                    <button type="button" id="cancelar">
+                        Cancelar
+                    </button>
+                </a>
+                <button type="submit" id="publicar">
+                    Publicar
+                </button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+</body>
+</html>

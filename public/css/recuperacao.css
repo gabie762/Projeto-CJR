@@ -1,0 +1,96 @@
+logo{
+    position: absolute;
+    width: 778px;
+    height: 451px;
+    top: 238px;
+    left: 0px;
+    
+    background: url(../imagens/cjr-grande.png);
+}
+
+h3{
+    /* Bem vindo de volta, fulano! escolha sua nova senha */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+    opacity: 0.7;
+}
+
+input[type=password] {
+    width: 401px;
+    height: 66px;
+    background: #D9D9D9;
+    border: 1px;
+    border-radius: 15px;
+    padding: 30px 30px;
+}
+
+button[type=submit]{
+    width: 283px;
+    height: 50px;
+    background: #D9D9D9;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.retangulo{
+    /* Rectangle 10 */
+    position: relative;
+    width: 547px;
+    height: 723px;
+    left: 778px;
+    top: 85px;
+    background: #222E50;
+    border-radius: 10px;
+}
+
+.box-txt{
+    position: absolute;
+    width: 363px;
+    height: 186.71px;
+    left: 73px;
+    top: 112px;
+}
+
+.senha{
+    position: absolute;
+    width: 91px;
+    height: 92.28px;
+    left: 75px;
+    top: 284px;
+}
+
+.confirmacao-txt{
+    position: absolute;
+    width: 401px;
+    height: 69.34px;
+    left: 75px;
+    top: 417px;
+}
+
+.txt-cadastro{
+    position: absolute;
+    width: 79px;
+    height: 19px;
+    left: 102px;
+    top: 15px;
+}
+
+.txt-acesso{
+    position:absolute;
+    width: 215px;
+    height: 19px;
+    top: 547px;
+    left: 166px;
+}
+
+.box-cadastrar{
+    position: absolute;
+    width: 283px;
+    height: 50px;
+    left: 132px;
+    top: 579px;
+}

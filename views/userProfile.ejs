@@ -1,0 +1,44 @@
+<%- include("header.ejs", {title:"Perfil", logIn, username, img, user}) %>
+<section >
+  <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
+
+    <div class="user-page">
+      <div class="user-header">
+      <div class="user-icon">
+        <img src="data:image/jpeg;base64, <%=user.userImg%>" alt="avatar" class="user-icon">
+      </div>
+    </div>
+    <div class="user-info">
+      <h1 id="user-name"><%= user.username%></h1>
+      <button class="profile-edit-btn">Editar Perfil</button>
+      <img src="../imagens/cargo-img.png" id="building-icon">
+      <p class="user-function"><%= user.cargo%></p>
+      <img src="../imagens/email-img.png" id="email-icon">
+      <p class="user-email"><%=user.email%></p>
+    </div>
+    <div class="user-feed">
+      <hr id="line" size="0.5px">
+      <h3 id="publicacoes">Publicações</h3>
+      <br>
+        <div class="posts">
+          <%user.posts.reverse().forEach((post)=>{%>
+            <div class="post">
+              <div id="post-user-infos">
+                  <img id="img-post" src="data:image/jpeg;base64, <%=user.userImg%>" alt="">
+                  <p id="post-owner"><%=user.username%></p>
+                  <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
+                  </div>
+                  <div id="post-content">
+                      <p>
+                        <%=post.content%>
+                      </p>  
+              </div>
+          </div>
+          <%})%>
+          </div>
+  </div>
+  </div>
+
+  </section>
+  </body>
+</html>
