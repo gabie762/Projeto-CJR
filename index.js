@@ -99,9 +99,8 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
   
     
     const userImg = fs.readFileSync(file.path, {encoding: 'base64'})
-    if (file==undefined || !file){
-      userImg=fs.readFileSync("./public/imagens/foto-perfil.png", {encoding: 'base64'})
-    }
+   
+    
 
     const newUser = await prisma.user.create({
       data: {
@@ -123,8 +122,40 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     res.redirect("/")
     //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
   } catch (err) {
-    console.log(err);
-    res.status(500).send(`Fatal: ${err}`);
+    
+
+    
+    
+    const {file, body} = req;
+    
+    console.log(body);
+    console.log(file);
+    const {nome, genero, cargo, email, password } = body;
+    
+    const userImg=fs.readFileSync("./public/imagens/foto-perfil.png", {encoding: 'base64'})
+
+   
+    
+
+    const newUser = await prisma.user.create({
+      data: {
+        userImg: userImg,
+        username:nome,
+        senha:password,
+        gender:genero,
+        email:email,
+        cargo:cargo,
+        admin: false,
+      },
+    });
+    
+
+    if (file != undefined){
+      fs.unlinkSync(file.path);
+    }
+    console.log(newUser); 
+    res.redirect("/")
+
   }
 });
 
