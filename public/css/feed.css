@@ -54,6 +54,9 @@ p{
     font-size: 15px;
 }
 
+
+
+
 .post{
     background-color: #222E50;
     border-radius: 18px;
@@ -110,7 +113,7 @@ p{
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
-      display: none;
+    display: none;
 }
 
 .section{
@@ -123,10 +126,7 @@ p{
       transform: translate(-50%, -50%);
       
       border-radius: 5px;
-      display: none;
-    
-    
-    
+      display: none; 
 
 }
 
@@ -143,45 +143,148 @@ p{
    border-radius: 20px;
    min-width: 300%;
 }
+button{
+    cursor: pointer;
+  }
 
 
-#input-post{
-    background-color: #222E50;
-    border-radius: 20px;
-    border: 0px;
-    width: 100%;
-    height: 300px;
-    
+  .post-container{
+width: 705px;
+height: 449px;
+border-radius: 16px;
+background-color: #222E50;
+display: flex;
+align-items: center;
+justify-content: center;   
+position: absolute;
+left: 50%;
+top:50%;
+transform: translate(-50%, -50%);
+}
+
+.post-box{
+width: 563px;
+height: 285px;
+border-radius: 16px;
+background-color: #343f5e;
+position: absolute;
+}
+
+.post-settings{
+position: relative;
+display: flex;
+/* flex-wrap: wrap; */
+align-items: center;
+gap: 20px;
+/* background-color: yellow; */
+width: auto;
+height: 47px;
+border-bottom: 0.1rem solid rgba(255, 255, 255, 0.50);
+}
+
+.txt-option{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+
+.adv-option-button{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+
+/* .link-option-format{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+.img-option-format{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+} */
+
+#bold-btn{
+background-color: transparent;
+border: transparent;
+position: relative;
+left:4%;
+top: 2vh;
+}
+
+.italic-btn{
+background-color: transparent;
+border: transparent;
+position: absolute;
+left: 3%;
+top: 2vh;
+}
+
+.italic-btn{
+background-color: transparent;
+border: transparent;
+position: absolute;
+left:6%;
+top: 2vh;
 }
 
 
-.post-btns{
+#cancel-btn{
+position: relative;
+background-color: transparent;
+border-radius: 16px;
+width: 140px;
+height: 50px;
+color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+top:40%;
+left: 18%;
+border: transparent;
+}
+
+
+#conteudo-postagem{
+    background-color: #343f5e;
     display: flex;
-    margin-top: 20px;
-    gap: 20px;
-    justify-content: right;
+    margin-top: 0;
+    align-items: flex-start;
+    width: 100%;
+    height: 80%;
+    border: 0px;
 }
 
-#cancelar{
-    background-color: transparent;
-    color: #ffffff;
-    width: 100px;
-    height: 45px;
-    font-size: 15px;
-    font-family: 'Inter';
-    font-weight: 700;
-    border: 0px;
-    border-radius: 15px;
+#post-btn{
+position: relative;
+width: 140px;
+height: 50px;
+border-radius: 16px;
+background: #8BC34A;
+color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+top:40%;
+left: 20%;
+border: transparent;
 }
 
-#publicar{
-    background-color: #8BC34A;
-    color: #ffffff;
-    width: 100px;
-    height: 45px;
-    font-size: 15px;
-    font-family: 'Inter';
-    font-weight: 700;
-    border: 0px;
-    border-radius: 15px;
+#txt-input{
+padding: 20px;
+/* background-color: yellow; */
+height: 83%;
+width: auto;
+position: relative;
+overflow-y: hidden;
+border: transparent;
 }

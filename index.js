@@ -5,7 +5,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const app = express();
 const fs =  require("fs")
-const sharp = require("sharp")
+
 const {PrismaClient} = require("@prisma/client")
 const prisma = new PrismaClient()
 const multer = require("multer")
@@ -207,6 +207,7 @@ app.post("/feed", async (req, res)=>{
   try {
 
     let {conteudo} = req.body;
+    console.log(req.body)
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
