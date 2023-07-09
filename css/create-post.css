@@ -1,0 +1,129 @@
+.post-container{
+    width: 705px;
+    height: 449px;
+    border-radius: 16px;
+    background-color: #222E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.post-box{
+    width: 563px;
+    height: 285px;
+    border-radius: 16px;
+    background-color: #343f5e;
+    position: absolute;
+}
+
+.post-settings{
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    gap: 20px;
+    /* background-color: yellow; */
+    width: auto;
+    height: 47px;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.50);
+}
+
+.txt-option{
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    left: 2%;
+}
+
+.adv-option-button{
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    left: 2%;
+}
+
+/* .link-option-format{
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    left: 2%;
+}
+.img-option-format{
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    left: 2%;
+} */
+
+#bold-btn{
+    background-color: transparent;
+    border: transparent;
+    position: relative;
+    left:4%;
+    top: 2vh;
+}
+
+.italic-btn{
+    background-color: transparent;
+    border: transparent;
+    position: absolute;
+    left: 3%;
+    top: 2vh;
+}
+
+.italic-btn{
+    background-color: transparent;
+    border: transparent;
+    position: absolute;
+    left:6%;
+    top: 2vh;
+}
+
+
+#cancel-btn{
+    position: relative;
+    background-color: transparent;
+    border-radius: 16px;
+    width: 140px;
+    height: 50px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top:40%;
+    left: 18%;
+    border: transparent;
+}
+
+#post-btn{
+    position: relative;
+    width: 140px;
+    height: 50px;
+    border-radius: 16px;
+    background: #8BC34A;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top:40%;
+    left: 20%;
+    border: transparent;
+}
+
+#txt-input{
+    padding: 20px;
+    /* background-color: yellow; */
+    height: 83%;
+    width: auto;
+    position: relative;
+    overflow-y: hidden;
+    border: transparent;
+}
