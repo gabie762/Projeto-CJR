@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "userImg" BLOB,
+    "userImg" TEXT,
     "username" TEXT NOT NULL,
     "senha" TEXT NOT NULL,
     "gender" TEXT NOT NULL,

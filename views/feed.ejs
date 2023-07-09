@@ -12,7 +12,7 @@
                 <% posts.reverse().forEach((post)=>{ %>
                 <div class="post">
                     <div id="post-user-infos">
-                        <img id="img-post" src="../imagens/image 1.png" alt="">
+                        <img id="img-post" src="data:image/jpeg;base64, <%=post.user.userImg%>" alt="">
                         <a href="/perfil/<%=post.user.id%>" id="link-name">
                             <p id="post-owner"><%= post.user.username%></p>
 

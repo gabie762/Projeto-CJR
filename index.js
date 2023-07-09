@@ -40,12 +40,12 @@ app.post("/", async (req, res) => {
       where: {OR:[{username: login},{email:login}]}
     })
 
-    if (!login){
+    if (user == undefined){
       return res.status(401).json({error:"User not found"})
     }
 
    if (user.senha!= senha){
-    return res.status(401).json({ error: 'Invalid password' });
+      return res.status(401).json({ error: 'Invalid password' });
    } 
 
     req.session.authenticated = true;
@@ -59,7 +59,7 @@ app.post("/", async (req, res) => {
   } catch(err){
     console.log(err)
     console.log(req.body)
-    res.status(500).send(`Fatal: error`)
+    res.status(500).send(`error: ${err}`)
   }
 
 });
@@ -76,9 +76,9 @@ app.post("/recuperar", (req, res)=>{
     const {nova_senha, confirma_senha}= req.body;
     const resultado = {nova_senha, confirma_senha};
     console.log(req.body)
-    res.send(`${JSON.stringify(resultado)} enviado com sucesso`)
+    res.send(`${JSON.stringify(resultado)} modificado com sucesso`)
   } catch (err){
-    res.status(500).send(`Fatal: error`)
+    res.status(500).send(`Fatal: ${err}`)
   }
 })
 
@@ -91,15 +91,16 @@ app.get("/criar-conta", (req, res) => {
 app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
   try {
     const {file, body} = req;
-    console.log(file)
+   
+    console.log(body);
+    console.log(file);
     const {nome, genero, cargo, email, password } = body;
     const resultado = { nome, genero, cargo, email, password };
   
-
-    const auxImg = fs.readFileSync(file.path)
-    const userImg = await sharp(auxImg).resize({width:200}).jpeg().toBuffer()
+    
+    const userImg = fs.readFileSync(file.path, {encoding: 'base64'})
     if (file==undefined || !file){
-      userImg=null
+      userImg=fs.readFileSync("./public/imagens/foto-perfil.png", {encoding: 'base64'})
     }
 
     const newUser = await prisma.user.create({
@@ -118,11 +119,12 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     if (file != undefined){
       fs.unlinkSync(file.path);
     }
-    console.log(newUser); // Fix: Log newUser instead of user
-    res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
+    console.log(newUser); 
+    res.redirect("/")
+    //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
   } catch (err) {
     console.log(err);
-    res.status(500).send("Fatal: error");
+    res.status(500).send(`Fatal: ${err}`);
   }
 });
 
@@ -156,22 +158,26 @@ app.get("/feed", async (req,res)=>{
     const isAuthenticated = req.session.authenticated || false
     console.log(req.session.authenticated)
     let username = req.session.user
-    let userImg = req.session.img
-    res.render("feed", {logIn:isAuthenticated, username: username, img: userImg, posts:posts})
+    let author = await prisma.user.findUnique({
+      where: {username: req.session.user}
+    })
+
+    let userImg = author.userImg
+    res.render("feed", {logIn:isAuthenticated, username: username, img:userImg, posts:posts })
   } catch(err){
-    res.render("/feed", {logIn:false, username: null, img:null, posts:posts})
+    res.render("feed", {logIn:false, username: null, img:null, posts:posts})
   }
   
 
 })
 
-app.post("/feed", async (req, res)=> {
+app.post("/logout", async (req, res)=> {
   req.session.destroy((error) => {
     if (error) {
       console.error("Error occurred during session destruction:", error);
       res.status(500).redirect("Internal Server Error");
     } else {
-      res.redirect(301, "/feed")
+      res.redirect("/feed")
     }
 
 })
@@ -180,14 +186,13 @@ app.post("/feed", async (req, res)=> {
 
 //Comentarios
 app.get("/comentarios/:id", async (req,res)=>{
-  let postId = parseInt(req.path.split("/")[2]);
-  
-  const post = await prisma.post.findUnique({
-    where: {id: postId},
-    include: {user:true, comments:true}
-  })
-  console.log(post)
   try{
+    let postId = parseInt(req.path.split("/")[2]);
+    const post = await prisma.post.findUnique({
+      where: {id: postId},
+      include: {user:true, comments:true}
+    })
+    console.log(post)
     
     const isAuthenticated = req.session.authenticated || false
     console.log(req.session.authenticated)
@@ -199,7 +204,7 @@ app.get("/comentarios/:id", async (req,res)=>{
     
     res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg, post:post})
   }catch(err){
-    res.render("comentarios", {logIn:false, username: null, img: null, post:post})
+    res.redirect(201,"/feed")
 
   }
 })
@@ -233,7 +238,8 @@ app.post("/criar-post", async (req, res)=>{
       }
     })
     console.log(newPost)
-    res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
+    res.redirect("/feed")
+    //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
   } catch (err){
     console.log(err)
     res.status(500).send("Fatal: error");

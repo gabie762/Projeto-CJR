@@ -7,15 +7,17 @@
         </div>
         <div id="img-button">
           <div id="adicionar-img">
-              <input name="userImg" id="input-img" type="file" accept="image/png, image/jpeg, image/jpg">
+              <input name="userImg" id="input-img" type="file" accept="image/png, image/jpeg, image/jpg" value="../imagens/foto-perfil.png">
               <img id="user-img" src="../imagens/img-add.png" alt="" />
           </div>
           <script>
             let img = document.getElementById("user-img");
             let input = document.getElementById("input-img");
             img.onclick = function() {
+              input.value = "";
               input.click();
             };
+
           </script>
         </div>
         <br />

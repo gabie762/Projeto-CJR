@@ -13,7 +13,7 @@ datasource db {
 
 model User{
   id    String @id @default(uuid())
-  userImg Bytes?
+  userImg String?
   username String @unique
   senha String 
   gender String
