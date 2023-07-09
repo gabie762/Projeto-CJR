@@ -23,41 +23,84 @@
                     <img id="comment-img" src="../imagens/opened-comments.png" alt="">
                 </div>
 
+                <% post.comments.forEach((comment)=>{%>
                 <div class="comment">
                     <div id="b-top"></div>
                     <div id="comment-user-infos">
-                        <img id="img-comment" src="../imagens/image 1.png" alt="">
-                        <p id="comment-owner">Joazin Gamer</p>
-                        <p id="created-at">· 30 de jun</p>
+                        <img id="img-comment" src="data:image/jpeg;base64, <%=comment.user.userImg %>" alt="">
+                        <p id="comment-owner"><%=comment.user.username%></p>
                     </div>
                     <div id="comment-content">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero accusantium fugiat necessitatibus animi quos tenetur perspiciatis accusamus officia. Ut, explicabo! Earum ipsa sunt delectus rem eius animi, ut dolor cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum deserunt corporis sequi odit molestias illum dicta corrupti quisquam ut praesentium. Odio eligendi porro minus esse! Labore ab architecto odit perspiciatis.
+                            <%= comment.content%>
                         </p>  
-                    </div>                                    
+                    </div> 
                 </div>
-                <div class="comment">
-                    <div id="b-top"></div>
-                    <div id="comment-user-infos">
-                        <img id="img-comment" src="../imagens/image 1.png" alt="">
-                        <p id="comment-owner">Fulano</p>
-                        <p id="created-at">· 30 de jun</p>
-                    </div>
-                    <div id="comment-content">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ea neque expedita sunt quod sit dolores, excepturi, aliquam natus praesentium rerum molestias reprehenderit error vero atque est hic odio. Non?
-                        </p>  
-                    </div>
-
-                    
-                </div>
+                <%})%>
                 <%if (logIn){%>
                 <div class="comment-space">
-                    <a href="">
-                        <button class="comment-btn">
+                    <script >
+                        function openPopup() {
+                      var overlay = document.getElementById('overlay');
+                      var popup  = document.getElementById('popup');
+                      overlay.style.display = 'block';
+                      popup.style.display = 'block';
+                    }
+                    
+                    function cancelPopup() {
+                      var overlay = document.getElementById('overlay');
+                      var popup = document.getElementById('popup');
+                      overlay.style.display = 'none';
+                      popup.style.display = 'none';
+                    }
+                    
+                    function sendData() {
+                      var inputValue = document.getElementById('inputText').value;
+                      // Aqui você pode fazer a requisição POST usando o valor do input
+                      // por exemplo, usando fetch() ou XMLHttpRequest
+                      console.log('Valor do input:', inputValue);
+                      cancelPopup();
+                    }
+                    
+                    </script>
+                         <button class="comment-btn" type="button" onclick="openPopup()">
                             Comentar
                         </button>
-                    </a>
+                        
+
+                    <div id="overlay" class="overlay"></div>   
+                    <div class="section" id="popup">
+
+                        <form method="POST">
+                            <div class="container-comment">
+                                
+                                <div class="content">
+                                    <div class="options">
+                                        
+                                    </div>
+                                    <div class="criar-post">
+                                        <input name="conteudo" type="text" id="input-post">
+                                    </div>
+                                </div>
+                                
+                                <div class="post-btns">
+
+                                
+                                        <button onclick="cancelPopup()" type="button" id="cancelar">
+                                            Cancelar
+                                        </button>
+                            
+                                    <button type="submit" id="publicar">
+                                        Publicar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    
+                       
+                    
                 </div>
                 <%}%>
             </div>

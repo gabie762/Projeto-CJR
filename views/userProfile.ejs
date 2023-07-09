@@ -5,7 +5,7 @@
     <div class="user-page">
       <div class="user-header">
       <div class="user-icon">
-        <img src="../imagens/image 1.png" alt="avatar" class="user-icon">
+        <img src="data:image/jpeg;base64, <%=user.userImg%>" alt="avatar" class="user-icon">
       </div>
     </div>
     <div class="user-info">
@@ -24,7 +24,7 @@
           <%user.posts.reverse().forEach((post)=>{%>
             <div class="post">
               <div id="post-user-infos">
-                  <img id="img-post" src="../imagens/image 1.png" alt="">
+                  <img id="img-post" src="data:image/jpeg;base64, <%=user.userImg%>" alt="">
                   <p id="post-owner"><%=user.username%></p>
                   <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
                   </div>

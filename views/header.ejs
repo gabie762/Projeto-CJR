@@ -62,11 +62,19 @@
           
           <img id="img-logado" src="data:image/jpeg;base64, <%=img%>"" alt="">
 
-          <form action="/logout" method="post">
+          <form action="/logout" method="" id="form">
             <input type="hidden" name="log_out" value=false>
             <button type="submit" id="logout">
               <img id="sair" src="../imagens/log-out.png" alt="">
             </button>
+            <script>
+              let form = document.getElementById("form");
+              let logout = document.getElementById("logout");
+
+              logout.onclick = function(){
+                form.method = "POST";
+              }
+            </script>
           </form>
 
           

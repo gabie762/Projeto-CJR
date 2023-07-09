@@ -180,10 +180,11 @@ section{
 .post{
   background-color: #222E50;
   border-radius: 18px;
-  padding-top:10px;
+  padding-top:20px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
+
 }
 
 #post-user-infos{
@@ -210,4 +211,5 @@ section{
 }
 #post-content{
   margin-left: 35px;
+  margin-top: 10px;
 }

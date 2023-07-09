@@ -48,7 +48,7 @@ model Cargo{
 
 model Comments {
   id            Int      @id @default(autoincrement())
-  post Post @relation(fields: [post_id], references: [id])
+  post          Post     @relation(fields: [post_id], references: [id])
   post_id       Int
   user          User     @relation(fields: [user_id], references: [id])
   user_id       String     

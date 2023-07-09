@@ -202,60 +202,8 @@ app.get("/feed", async (req,res)=>{
 
 })
 
-app.post("/logout", async (req, res)=> {
-  req.session.destroy((error) => {
-    if (error) {
-      console.error("Error occurred during session destruction:", error);
-      res.status(500).redirect("Internal Server Error");
-    } else {
-      res.redirect("/feed")
-    }
 
-})
-})
-
-
-//Comentarios
-app.get("/comentarios/:id", async (req,res)=>{
-  try{
-    let postId = parseInt(req.path.split("/")[2]);
-    const post = await prisma.post.findUnique({
-      where: {id: postId},
-      include: {user:true, comments:true}
-    })
-    console.log(post)
-    
-    const isAuthenticated = req.session.authenticated || false
-    console.log(req.session.authenticated)
-
-
-    
-    let username = req.session.user
-    let userImg = req.session.img
-    
-    res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg, post:post})
-  }catch(err){
-    res.redirect(201,"/feed")
-
-  }
-})
-
-
-
-
-
-//Criar Post
-app.get("/criar-post", (req, res)=>{
-  try{
-    let logIn = req.session.authenticated;
-    let username = req.session.user
-    res.render("post", {logIn:logIn, username:username, img: req.session.img})
-  } catch(err){
-    res.render("post", {logIn:false, username:username})
-  }
-})
-
-app.post("/criar-post", async (req, res)=>{
+app.post("/feed", async (req, res)=>{
   try {
 
     let {conteudo} = req.body;
@@ -276,6 +224,82 @@ app.post("/criar-post", async (req, res)=>{
     res.status(500).send("Fatal: error");
   }
 })
+
+//logout
+
+
+app.post("/logout", async (req, res)=> {
+  req.session.destroy((error) => {
+    if (error) {
+      console.error("Error occurred during session destruction:", error);
+      res.status(500).redirect("Internal Server Error");
+    } else {
+      res.redirect("/feed")
+    }
+
+})
+})
+
+
+//Comentarios
+app.get("/comentarios/:id", async (req,res)=>{
+  try{
+    let postId = parseInt(req.path.split("/")[2]);
+    const post = await prisma.post.findUnique({
+      where: {id: postId},
+      include: {user:true, comments:{include: {user: true}}}
+    })
+    console.log(post)
+    
+    const isAuthenticated = req.session.authenticated || false
+    console.log(req.session.authenticated)
+
+
+    
+    let username = req.session.user
+    let userImg = req.session.img
+    
+    res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg, post:post})
+  }catch(err){
+    res.redirect(201,"/feed")
+
+  }
+})
+
+
+
+app.post("/comentarios/:id", async (req, res)=>{
+  try {
+
+    let {conteudo} = req.body;
+    let author = await prisma.user.findUnique({
+      where: {username: req.session.user}
+    })
+
+    let postId = parseInt(req.path.split("/")[2]);
+    const post = await prisma.post.findUnique({
+      where: {id: postId},
+      include: {user:true, comments:true}
+    })
+
+    const newComment = await prisma.comments.create({
+      data : {post_id: post.id, user_id:author.id, content: conteudo},
+      include:{user:true, post:true}
+    })
+    console.log(newComment)
+    res.redirect("/feed" )
+    //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
+  } catch (err){
+    console.log(err)
+    res.status(500).send("Fatal: error");
+  }
+})
+
+
+
+
+
+
 
 app.on('close', async () =>{
   await prisma.$disconnect();
