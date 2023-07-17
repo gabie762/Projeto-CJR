@@ -4,7 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const app = express();
-const fs =  require("fs")
+const fs =  require("fs") 
 
 const {PrismaClient} = require("@prisma/client")
 const prisma = new PrismaClient()
@@ -175,7 +175,7 @@ app.get("/perfil/:id", async (req, res)=>{
     res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:user})
   } catch(err){
     let logIn = false
-    res.render("userProfile",{logIn:logIn})
+    res.render("userProfile",{logIn:logIn, username: null, img: null, user:null})
   }
 })
 

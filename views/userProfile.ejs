@@ -9,12 +9,22 @@
       </div>
     </div>
     <div class="user-info">
-      <h1 id="user-name"><%= user.username%></h1>
-      <button class="profile-edit-btn">Editar Perfil</button>
-      <img src="../imagens/cargo-img.png" id="building-icon">
-      <p class="user-function"><%= user.cargo%></p>
-      <img src="../imagens/email-img.png" id="email-icon">
-      <p class="user-email"><%=user.email%></p>
+      <div class="infos-perfil-left">
+        <p id="username"><%= user.username%></p>
+        <div class="cargo">
+            <img id="img-cargo" src="../imagens/cargo-img.png" alt="">
+            <p id="cargo"><%= user.cargo%></p>
+        </div>
+        <div class="email">
+            <img id="img-email" src="../imagens/email-img.png" alt="">
+            <p id="email"><%=user.email%></p>
+        </div>
+      </div>
+      <div class="editar-perfil">
+        <%if (logIn && username== user.username){%>
+          <button class="profile-edit-btn">Editar Perfil</button>
+          <%}%>
+      </div>
     </div>
     <div class="user-feed">
       <hr id="line" size="0.5px">

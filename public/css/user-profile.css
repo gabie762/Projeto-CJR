@@ -22,8 +22,25 @@
   /* background-color: chocolate; */
   width: auto;
   height: 23%;
-
+  padding-left: 5px;
+  display: flex;
+  flex-direction: row;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 15px;
+    padding-top: 60px;
+    justify-content: space-between;
   
+  
+  
+}
+
+.infos-perfil-left{
+  position: relative;
+  top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 section{
@@ -56,6 +73,26 @@ section{
   left: 5%;
   top: 25%;
 }
+
+#username{
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.cargo{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.email{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 3px;
+  gap: 10px;
+}
+
 
 #user-name{
   width:8.875rem;
@@ -143,13 +180,12 @@ section{
 .profile-edit-btn{
   width: 154px;
   height: 48px;
-  left: 28.438rem;
   top: 0.75rem;
+  position: relative;
   border-radius: 16px;
   border: 1px solid #000;
   background: #111E3E;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  position: relative;
   text-align: center;
   color: #FFF;
   font-size: 16px;
