@@ -34,9 +34,21 @@
           <%user.posts.reverse().forEach((post)=>{%>
             <div class="post">
               <div id="post-user-infos">
+                <div id="post-user-personal-infos">
                   <img id="img-post" src="data:image/jpeg;base64, <%=user.userImg%>" alt="">
                   <p id="post-owner"><%=user.username%></p>
                   <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
+                </div>
+                <div>
+                  <%if (logIn && username==user.username){%>
+                    <form action="/deletar-post" method="POST">
+                      <input type="hidden" name="post_id" value="<%= post.id%>">
+                      <button id="deletePost" type="submit" class="trash">
+                        <img src="../imagens/trash.png" alt="">
+                      </button>
+                    </form>
+                  <%}%>
+                </div>
                   </div>
                   <div id="post-content">
                       <p>

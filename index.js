@@ -8,7 +8,8 @@ const fs =  require("fs")
 
 const {PrismaClient} = require("@prisma/client")
 const prisma = new PrismaClient()
-const multer = require("multer")
+const multer = require("multer");
+const { parse } = require("path");
 const upload = multer({dest:'./public/imagens'})
 
 app.use(express.static(__dirname + '/public'))
@@ -296,6 +297,35 @@ app.post("/comentarios/:id", async (req, res)=>{
   }
 })
 
+
+
+app.post("/deletar-post", async (req, res)=>{
+  const {post_id} = req.body;
+  console.log(post_id)
+
+  try{
+    const deleteComments = await prisma.comments.deleteMany({
+      where:{
+        post_id: parseInt(post_id)
+      }
+    })
+    const deletePost = await prisma.post.delete({
+      where:{
+        id: parseInt(post_id)
+      }
+    })
+  } catch(err){
+    const deletePost = await prisma.post.delete({
+      where:{
+        id: parseInt(post_id)
+      }
+    })
+  }
+
+  
+  res.redirect("/feed")
+})
+ 
 
 
 
