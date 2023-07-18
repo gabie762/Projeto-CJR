@@ -1,4 +1,4 @@
-<%- include("header.ejs", {title:"Feed", logIn, username, img}) %>
+<%- include("header.ejs", {title:"Feed", logIn, user, img}) %>
 
         <section>
             
@@ -168,13 +168,28 @@
                 <% posts.reverse().forEach((post)=>{ %>
                 <div class="post">
                     <div id="post-user-infos">
+                      <div id="post-user-personal-infos">
+
                         <img id="img-post" src="data:image/jpeg;base64, <%=post.user.userImg%>" alt="">
                         <a href="/perfil/<%=post.user.id%>" id="link-name">
-                            <p id="post-owner"><%= post.user.username%></p>
-
+                          <p id="post-owner"><%= post.user.username%></p>
+                          
                         </a>
                         <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
                         <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %></p>
+                      </div>
+
+
+                        <div id="trash">
+                          <%if (logIn && user.admin){%>
+                            <form action="/deletar-post" method="POST">
+                              <input type="hidden" name="post_id" value="<%= post.id%>">
+                              <button id="deletePost" type="submit" class="trash">
+                                <img src="../imagens/trash.png" alt="">
+                              </button>
+                            </form>
+                          <%}%>
+                        </div>
                     </div>
                     <div id="post-content">
                         <p>

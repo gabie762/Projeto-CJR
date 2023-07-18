@@ -114,7 +114,26 @@ p{
     display: flex;
     flex-direction: row;
     gap:10px;
+    
+    justify-content: space-between;
+}
+
+#comment-user-personal-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
     align-items: center;
+}
+
+.trash{
+    background-color: transparent;
+    color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+
+#trash{
+    margin-right: 15px;
 }
 
 #img-comment{

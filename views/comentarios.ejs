@@ -1,4 +1,4 @@
-<%- include("header.ejs", {title:"Comentarios", logIn, username, img, post})%>
+<%- include("header.ejs", {title:"Comentarios", logIn, user, img, post})%>
         <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
         <section>
             <div class="container">
@@ -27,8 +27,20 @@
                 <div class="comment">
                     <div id="b-top"></div>
                     <div id="comment-user-infos">
-                        <img id="img-comment" src="data:image/jpeg;base64, <%=comment.user.userImg %>" alt="">
-                        <p id="comment-owner"><%=comment.user.username%></p>
+                        <div id="comment-user-personal-infos"> 
+                            <img id="img-comment" src="data:image/jpeg;base64, <%=comment.user.userImg %>" alt="">
+                            <p id="comment-owner"><%=comment.user.username%></p>
+                        </div>
+                            <div id="trash">
+                                <%if (logIn && (user.admin)){%>
+                                  <form action="/deletar-comment" method="POST">
+                                    <input type="hidden" name="comment_id" value="<%= comment.id%>">
+                                    <button id="deleteComment" type="submit" class="trash">
+                                      <img src="../imagens/trash.png" alt="">
+                                    </button>
+                                  </form>
+                                <%}%>
+                              </div>
                     </div>
                     <div id="comment-content">
                         <p>

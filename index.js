@@ -195,9 +195,9 @@ app.get("/feed", async (req,res)=>{
     })
 
     let userImg = author.userImg
-    res.render("feed", {logIn:isAuthenticated, username: username, img:userImg, posts:posts })
+    res.render("feed", {logIn:isAuthenticated, user: author, img:userImg, posts:posts })
   } catch(err){
-    res.render("feed", {logIn:false, username: null, img:null, posts:posts})
+    res.render("feed", {logIn:false, user: null, img:null, posts:posts})
   }
   
 
@@ -251,6 +251,10 @@ app.get("/comentarios/:id", async (req,res)=>{
       where: {id: postId},
       include: {user:true, comments:{include: {user: true}}}
     })
+
+    let user = await prisma.user.findUnique({
+      where: {username: req.session.user}
+    })
     console.log(post)
     
     const isAuthenticated = req.session.authenticated || false
@@ -261,7 +265,7 @@ app.get("/comentarios/:id", async (req,res)=>{
     let username = req.session.user
     let userImg = req.session.img
     
-    res.render("comentarios", {logIn:isAuthenticated, username: username, img: userImg, post:post})
+    res.render("comentarios", {logIn:isAuthenticated, user: user, img: userImg, post:post})
   }catch(err){
     res.redirect(201,"/feed")
 
@@ -299,6 +303,7 @@ app.post("/comentarios/:id", async (req, res)=>{
 
 
 
+//Deletar Post
 app.post("/deletar-post", async (req, res)=>{
   const {post_id} = req.body;
   console.log(post_id)
@@ -321,12 +326,27 @@ app.post("/deletar-post", async (req, res)=>{
       }
     })
   }
-
-  
   res.redirect("/feed")
 })
  
 
+//Deletar Comentario
+app.post("/deletar-comment", async (req, res)=>{
+  const {comment_id} = req.body;
+  console.log(comment_id)
+
+  try{
+    const deleteComments = await prisma.comments.delete({
+      where:{
+        id: parseInt(comment_id)
+      }
+    })
+  } catch(err){
+    console.log("comment not found")
+  }
+  res.redirect("/feed")
+})
+ 
 
 
 

@@ -58,7 +58,12 @@
       </div>
       <%}else {%>
         <div class="logado">
-          <span id="user"><%= username %></span>
+          <div class="header-username">
+            <span id="user"><%= user.username %></span>
+            <%if (user.admin){%>
+              <span id="user"> - ADMIN </span>
+            <%}%>
+          </div>
           
           <img id="img-logado" src="data:image/jpeg;base64, <%=img%>"" alt="">
 
