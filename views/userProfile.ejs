@@ -5,24 +5,65 @@
     <div class="user-page">
       <div class="user-header">
       <div class="user-icon">
-        <img src="data:image/jpeg;base64, <%=user.userImg%>" alt="avatar" class="user-icon">
+        <img src="data:image/jpeg;base64, <%=perfil.userImg%>" alt="avatar" class="user-icon">
       </div>
     </div>
     <div class="user-info">
       <div class="infos-perfil-left">
-        <p id="username"><%= user.username%></p>
+        <p id="username"><%= perfil.username%></p>
         <div class="cargo">
             <img id="img-cargo" src="../imagens/cargo-img.png" alt="">
-            <p id="cargo"><%= user.cargo%></p>
+            <p id="cargo"><%= perfil.cargo%></p>
         </div>
         <div class="email">
             <img id="img-email" src="../imagens/email-img.png" alt="">
-            <p id="email"><%=user.email%></p>
+            <p id="email"><%=perfil.email%></p>
         </div>
       </div>
       <div class="editar-perfil">
-        <%if (logIn && username== user.username){%>
+        <%if (logIn && username== perfil.username){%>
           <button class="profile-edit-btn">Editar Perfil</button>
+          <%}%>
+        <%if (logIn && username!= perfil.username && admin){%>
+
+          <script>
+              function openPopup() {
+                      let overlay = document.getElementById('overlay');
+                      let popup  = document.getElementById('popup');
+                      overlay.style.display = 'block';
+                      popup.style.display = 'block';
+                    }
+                    
+                    function cancelPopup() {
+                      let overlay = document.getElementById('overlay');
+                      let popup = document.getElementById('popup');
+                      overlay.style.display = 'none';
+                      popup.style.display = 'none';
+                    }
+                    
+                    function sendData() {
+                      let inputValue = document.getElementById('inputText').value;
+                      console.log('Valor do input:', inputValue);
+                      cancelPopup();
+                    }
+          </script>
+
+        
+            
+            <button type="button" onclick="openPopup()" class="profile-edit-btn">Deletar Perfil</button>
+          
+          <div id="overlay" class="overlay"></div> 
+          <div class="confirm-delete" id="popup">
+            <form method="POST" action="/deletar-user">
+              <div class="delete-container">
+                <span id="msg-delete">Quer mesmo deletar esse perfil?</span>
+                <button class="delete-btns" type="button" id="cancel-btn" onclick="cancelPopup()">Cancelar</button>
+                <input type="hidden" value="<%=perfil.id%>" name="deletar_user">
+                <button class="delete-btns" type="submit" id="delete-btn" onclick="sendData()">Deletar</button>
+              </div>
+            </form>
+          </div>
+
           <%}%>
       </div>
     </div>
@@ -31,16 +72,16 @@
       <h3 id="publicacoes">Publicações</h3>
       <br>
         <div class="posts">
-          <%user.posts.reverse().forEach((post)=>{%>
+          <%perfil.posts.reverse().forEach((post)=>{%>
             <div class="post">
               <div id="post-user-infos">
                 <div id="post-user-personal-infos">
-                  <img id="img-post" src="data:image/jpeg;base64, <%=user.userImg%>" alt="">
-                  <p id="post-owner"><%=user.username%></p>
+                  <img id="img-post" src="data:image/jpeg;base64, <%=perfil.userImg%>" alt="">
+                  <p id="post-owner"><%=perfil.username%></p>
                   <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
                 </div>
                 <div>
-                  <%if (logIn && username==user.username){%>
+                  <%if (logIn && username==perfil.username){%>
                     <form action="/deletar-post" method="POST">
                       <input type="hidden" name="post_id" value="<%= post.id%>">
                       <button id="deletePost" type="submit" class="trash">

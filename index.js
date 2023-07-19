@@ -173,10 +173,13 @@ app.get("/perfil/:id", async (req, res)=>{
   try{
     let logIn = req.session.authenticated
     let username = req.session.user
-    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:user})
+    let author = await prisma.user.findUnique({
+      where: {username: req.session.user}
+    })
+    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:author, admin: author.admin, perfil: user})
   } catch(err){
     let logIn = false
-    res.render("userProfile",{logIn:logIn, username: null, img: null, user:null})
+    res.render("userProfile",{logIn:logIn, username: null, img: null, user:null, admin: false, perfil: user})
   }
 })
 
@@ -348,7 +351,40 @@ app.post("/deletar-comment", async (req, res)=>{
 })
  
 
+app.post("/deletar-user", async (req, res)=>{
+  const {deletar_user} = req.body;
+  const perfil =  await prisma.user.findUnique({
+    where: {id: deletar_user},
+    include:{comments:true, posts:true},
+  })
+  console.log(perfil)
+  try {
+    const deleteComments = await prisma.comments.deleteMany({
+      where:{user_id: perfil.id}
+    })
+  } catch(err){
+    console.log("Comments not found")
+  }
 
+  try {
+    const deletePost = await prisma.post.deleteMany({
+      where:{user_id: perfil.id}
+    })
+  } catch(err){
+    console.log("Posts not found")
+    console.log(err)
+  }
+
+  try{
+    const deleteUser = await prisma.user.delete({
+      where: {id: perfil.id}
+    })
+  } catch(err){
+    console.log("User not found")
+    console.log(err)
+  }
+  res.redirect("/feed")
+})
 
 
 
