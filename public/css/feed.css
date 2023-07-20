@@ -159,38 +159,38 @@ button{
   }
 
 
-  .post-container{
-width: 705px;
-height: 449px;
-border-radius: 16px;
-background-color: #222E50;
-display: flex;
-align-items: center;
-justify-content: center;   
-position: absolute;
-left: 50%;
-top:50%;
-transform: translate(-50%, -50%);
+.post-container{
+    width: 705px;
+    height: 449px;
+    border-radius: 16px;
+    background-color: #222E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
 }
 
 .post-box{
-width: 563px;
-height: 285px;
-border-radius: 16px;
-background-color: #343f5e;
-position: absolute;
+    width: 563px;
+    height: 285px;
+    border-radius: 16px;
+    background-color: #343f5e;
+    position: absolute;
 }
 
 .post-settings{
-position: relative;
-display: flex;
-/* flex-wrap: wrap; */
-align-items: center;
-gap: 20px;
-/* background-color: yellow; */
-width: auto;
-height: 47px;
-border-bottom: 0.1rem solid rgba(255, 255, 255, 0.50);
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    gap: 20px;
+    /* background-color: yellow; */
+    width: auto;
+    height: 47px;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.50);
 }
 
 .trash{
@@ -278,35 +278,36 @@ border: transparent;
     background-color: #343f5e;
     display: flex;
     margin-top: 0;
-    align-items: flex-start;
+    top:0;
     width: 100%;
     height: 80%;
     border: 0px;
+    align-items: flex-start;
 }
 
 #post-btn{
-position: relative;
-width: 140px;
-height: 50px;
-border-radius: 16px;
-background: #8BC34A;
-color: #FFF;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-top:40%;
-left: 20%;
-border: transparent;
+    position: relative;
+    width: 140px;
+    height: 50px;
+    border-radius: 16px;
+    background: #8BC34A;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top:40%;
+    left: 20%;
+    border: transparent;
 }
 
 #txt-input{
-padding: 20px;
-/* background-color: yellow; */
-height: 83%;
-width: auto;
-position: relative;
-overflow-y: hidden;
-border: transparent;
+    padding: 20px;
+    /* background-color: yellow; */
+    height: 83%;
+    width: auto;
+    position: relative;
+    overflow-y: hidden;
+    border: transparent;
 }

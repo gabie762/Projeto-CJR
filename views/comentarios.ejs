@@ -11,9 +11,86 @@
                     </a>
                 <div class="post">
                     <div id="post-user-infos">
-                        <img id="img-post" src="data:image/jpeg;base64, <%=post.user.userImg%>" alt="">
-                        <p id="post-owner"><%= post.user.username%></p>
-                        <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %></p>
+                        <div id="post-personal-user-infos">
+                            <img id="img-post" src="data:image/jpeg;base64, <%=post.user.userImg%>" alt="">
+                            <p id="post-owner"><%= post.user.username%></p>
+                            <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %></p>
+                        </div>
+
+                        <% if (post.user.id == user.id){%>
+                        
+                            <div class="logedInBtns">
+                                <script >
+                                        function openPopup_() {
+                                          var overlay = document.getElementById('overlay_');
+                                          var popup  = document.getElementById('popup_');
+                                          overlay.style.display = 'block';
+                                          popup.style.display = 'block';
+                                        }
+                                        
+                                        function cancelPopup_() {
+                                          var overlay = document.getElementById('overlay_');
+                                          var popup = document.getElementById('popup_');
+                                          overlay.style.display = 'none';
+                                          popup.style.display = 'none';
+                                        }
+                                        
+                                        function sendData_() {
+                                          var inputValue = document.getElementById('inputText').value;
+                                          // Aqui você pode fazer a requisição POST usando o valor do input
+                                          // por exemplo, usando fetch() ou XMLHttpRequest
+                                          console.log('Valor do input:', inputValue);
+                                          cancelPopup();
+                                        }           
+                                </script>
+          
+                                  
+                                    
+                                    <button class="editPost" onclick="openPopup_()" type="button" class="trash">
+                                      <img id="editPost" src="../imagens/post-edit.png" alt="">
+                                    </button>
+                                 
+                                  <div id="overlay_" class="overlay_"></div>   
+                                  <div class="section_" id="popup_">
+              
+                                      <form action="/editar-post" method="POST">
+                                          <div class="container-edit">
+                                              
+                                              <div class="content">
+                                                  <div class="options">
+                                                      
+                                                  </div>
+                                                  <div class="edit-post">
+                                                      <input name="edit_post_id" type="hidden" value="<%=post.id%>">
+                                                      <input name="new_conteudo" type="text" id="input-edit" value="<%=post.content%>">
+                                                  </div>
+                                              </div>
+                                              
+                                              <div class="edit-btns">
+                                                      <button onclick="cancelPopup_()" type="button" id="cancelar">
+                                                          Cancelar
+                                                      </button>
+                                          
+                                                        <button type="submit" id="update">
+                                                            Update 
+                                                        </button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                      
+                                  </div>
+          
+          
+          
+                                <form action="/deletar-post" method="POST">
+                                  <input type="hidden" name="post_id" value="<%= post.id%>">
+                                  <button id="deletePost" type="submit" class="trash">
+                                    <img src="../imagens/trash.png" alt="">
+                                  </button>
+                                </form>
+                              </div>
+                        <%}%>  
+
                     </div>
                     <div id="post-content">
                         <p>

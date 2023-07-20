@@ -388,6 +388,26 @@ app.post("/deletar-user", async (req, res)=>{
 
 
 
+//Editar Post
+app.post("/editar-post", async (req, res)=>{
+    const {edit_post_id, new_conteudo} = req.body;
+
+    const updatePost = await prisma.post.update({
+      where: {
+        id: parseInt(edit_post_id),
+      },
+      data: {
+        content: new_conteudo,
+      },
+    })
+
+    res.redirect("/feed")
+    
+
+})
+
+
+
 app.on('close', async () =>{
   await prisma.$disconnect();
 })
