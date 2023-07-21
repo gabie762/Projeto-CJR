@@ -1,0 +1,85 @@
+<%- include("header.ejs", {title: "Editar Perfil",logIn, user, img})%>
+    <section class="register-page">
+      <div id="register-box">
+        <form action="/editar-perfil" id="form" method="POST" enctype="multipart/form-data">
+        <div class="register-img">
+          <img id="register-img" src="data:image/jpeg;base64, <%= user.userImg%>" alt="" />
+        </div>
+        <div id="img-button">
+          <div id="adicionar-img">
+              <input name="userImg" id="input-img" type="text" accept="image/png, image/jpeg, image/jpg" value="<%= user.userImg%>">
+              <img id="user-img" src="../imagens/img-add.png" alt="" />
+          </div>
+          <script>
+            let img = document.getElementById("user-img");
+            let input = document.getElementById("input-img");
+            img.onclick = function() {
+              input.value = "";
+              input.type = "file";
+              input.click();
+            };
+          </script>
+        </div>
+        <br />
+        
+          <input
+            type="text"
+            class="input-box"
+            id="name-box"
+            name="nome"
+            placeholder="Nome"
+            value="<%= user.username%>"
+          />
+
+          <br />
+
+          <select name="genero" id="genero-box">
+            <option value="<%= user.gender%>" id="genero"><%= user.gender%></option>
+            <option value="masculino" id="genero">Masculino</option>
+            <option value="feminino" id="genero">Feminino</option>
+            <option value="outro" id="genero">Outro</option>
+          </select>
+
+          <br />
+
+          <input
+            type="text"
+            class="input-box"
+            id="cargo-box"
+            name="cargo"
+            placeholder="Cargo"
+            value="<%= user.cargo%>"
+          />
+
+          <br />
+
+          <input
+            type="email"
+            class="input-box"
+            id="email-box"
+            name="email"
+            placeholder="Email"
+            value="<%=user.email%>"
+          />
+
+
+          <input
+            type="password"
+            class="input-box"
+            id="password"
+            name="password"
+            placeholder="Senha"
+            value="<%= user.senha%>"
+          />
+          <br />
+  
+          
+  
+          <button type="submit" id="register-button"> Update </button>
+        </form>
+    </div>
+
+
+    </section>
+  </body>
+</html>

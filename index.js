@@ -100,8 +100,6 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
   
     
     const userImg = fs.readFileSync(file.path, {encoding: 'base64'})
-   
-    
 
     const newUser = await prisma.user.create({
       data: {
@@ -123,9 +121,7 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     res.redirect("/")
     //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
   } catch (err) {
-    
 
-    
     
     const {file, body} = req;
     
@@ -134,8 +130,6 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     const {nome, genero, cargo, email, password } = body;
     
     const userImg=fs.readFileSync("./public/imagens/foto-perfil.png", {encoding: 'base64'})
-
-   
     
 
     const newUser = await prisma.user.create({
@@ -176,7 +170,7 @@ app.get("/perfil/:id", async (req, res)=>{
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
-    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:author, admin: author.admin, perfil: user})
+    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:user, admin: author.admin, perfil: user})
   } catch(err){
     let logIn = false
     res.render("userProfile",{logIn:logIn, username: null, img: null, user:null, admin: false, perfil: user})
@@ -402,8 +396,95 @@ app.post("/editar-post", async (req, res)=>{
     })
 
     res.redirect("/feed")
+})
+
+//Editar Perfil
+app.get("/editar-perfil/", async (req, res)=>{
+  try{
+    login = req.session.authenticated;
+    const perfil =  await prisma.user.findUnique({
+      where: {username: req.session.user},
+    })
+    res.render("editProfile", {logIn: login, user: perfil, img: perfil.userImg})
+  } catch(err){
+    res.redirect("/")
+  }
+})
+
+app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
+  try {
+    const {file, body} = req;
+   
+    console.log(body);
+
+    console.log(JSON.stringify(file));
+    const perfil = await prisma.user.findUnique({
+      where: {username: req.session.user},
+    });
+    
+    const {nome, genero, cargo, email, password } = body;
+    const resultado = { nome, genero, cargo, email, password };
+    console.log("FLUMINENSE")
+    
+    const userImg = fs.readFileSync(file.path, {encoding: 'base64'})
+    if (cargo==""){
+      cargo = perfil.cargo;
+    }
+
+    const newUser = await prisma.user.update({
+      where: {id: perfil.id},
+      data: {
+        userImg: userImg,
+        username:nome,
+        senha:password,
+        gender:genero,
+        email:email,
+        cargo:cargo,
+        admin: false,
+      },
+    });
     
 
+    if (file != undefined){
+      fs.unlinkSync(file.path);
+    }
+    console.log(newUser); 
+    res.redirect("/feed")
+    //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
+  } catch (err) {
+
+    
+    const {file, body} = req;
+    console.log(body);
+    
+    const perfil = await prisma.user.findUnique({
+      where: {username: req.session.user},
+    });
+    
+    const {nome, userImg,genero, cargo, email, password } = body;
+   
+
+    const newUser = await prisma.user.update({
+      where: {id: perfil.id},
+      data: {
+        userImg: userImg,
+        username:nome,
+        senha:password,
+        gender:genero,
+        email:email,
+        cargo:cargo,
+        admin: false,
+      },
+    });
+    
+
+    if (file != undefined){
+      fs.unlinkSync(file.path);
+    }
+    console.log(newUser); 
+    res.redirect("/feed")
+
+  }
 })
 
 

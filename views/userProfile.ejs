@@ -22,8 +22,13 @@
       </div>
       <div class="editar-perfil">
         <%if (logIn && username== perfil.username){%>
-          <button class="profile-edit-btn">Editar Perfil</button>
-          <%}%>
+          <a id="edit-perfil" href="/editar-perfil">
+            <button class="profile-edit-btn">
+              Editar Perfil
+            </button>
+          </a>
+        <%}%>
+        
         <%if (logIn && username!= perfil.username && admin){%>
 
           <script>
@@ -100,8 +105,6 @@
                               
                               function sendData_() {
                                 var inputValue = document.getElementById('inputText').value;
-                                // Aqui você pode fazer a requisição POST usando o valor do input
-                                // por exemplo, usando fetch() ou XMLHttpRequest
                                 console.log('Valor do input:', inputValue);
                                 cancelPopup();
                               }           
@@ -109,9 +112,9 @@
 
                         
                           
-                          <button class="editPost" onclick="openPopup_()" type="button" class="trash">
+                          <!-- <button class="editPost" onclick="openPopup_()" type="button" class="trash">
                             <img id="editPost" src="../imagens/post-edit.png" alt="">
-                          </button>
+                          </button> -->
                        
                         <div id="overlay_" class="overlay_"></div>   
                         <div class="section_" id="popup_">
