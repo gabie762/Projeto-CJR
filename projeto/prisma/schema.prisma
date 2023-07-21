@@ -7,45 +7,60 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./database.db"
+  url      = env("DATABASE_URL")
 }
 
-model Usuario {
-  id String @id 
+
+model User{
+  id    String @id @default(uuid())
+  userImg String?
   username String @unique
-  senha String @unique
-  gender String @unique
+  senha String 
+  gender String
   email String @unique
-  cargo String @unique
-  admin Boolean? @unique
-  createdAt DateTime @default(now())
+  cargo String
+  admin Boolean
+  created_at  DateTime @default(now())
   posts Post[]
   comments Comments[]
+  Cargo Cargo[]
+  Likes Likes[]
 }
 
-model Cargo {
-  id Int @id 
-  nome String @unique
-  nucleo String @unique
-  createdAt DateTime @default(now())
-}
-
-model Post {
-  id Int @id
-  user Usuario @relation(fields: [user_id], references: [id])
-  user_id String 
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
+model Post{
+  id    Int @id @default(autoincrement())
+  user User  @relation(fields: [user_id], references: [id])
+  user_id String
+  content String
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
   comments Comments[]
+  likes Likes[]
+}
 
+
+model Cargo{
+  id           Int @id @default(autoincrement())
+  user         User @relation(fields: [nome], references: [username])
+  nome         String @unique
+  nucleo       String 
+  createdAt     DateTime @default(now())
 }
 
 model Comments {
-  id Int @id @default(autoincrement())
-  content String 
-  post Post @relation(fields: [post_id], references: [id])
-  post_id Int
-  user Usuario @relation(fields: [user_id], references: [id])
-  user_id String 
+  id            Int      @id @default(autoincrement())
+  post          Post     @relation(fields: [post_id], references: [id])
+  post_id       Int
+  user          User     @relation(fields: [user_id], references: [id])
+  user_id       String     
+  content       String
+}
 
+model Likes {
+  id          Int       @id @default(autoincrement())
+  post        Post      @relation(fields: [post_id], references: [id])
+  post_id     Int
+  user        User      @relation(fields: [user_id], references: [id])
+  user_id     String
+  liked_at    DateTime  @default(now())
 }
