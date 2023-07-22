@@ -1,0 +1,174 @@
+<%- include("header.ejs", {title:"Perfil", logIn, username, img, user}) %>
+<section >
+  <% const meses = ["jan", "fev", "mar", "abr","mai", "jun", "jul", "ago","set", "out", "nov", "dez"]; %>
+
+    <div class="user-page">
+      <div class="user-header">
+      <div class="user-icon">
+        <img src="data:image/jpeg;base64, <%=perfil.userImg%>" alt="avatar" class="user-icon">
+      </div>
+    </div>
+    <div class="user-info">
+      <div class="infos-perfil-left">
+        <p id="username"><%= perfil.username%></p>
+        <div class="cargo">
+            <img id="img-cargo" src="../imagens/cargo-img.png" alt="">
+            <p id="cargo"><%= perfil.cargo%></p>
+        </div>
+        <div class="email">
+            <img id="img-email" src="../imagens/email-img.png" alt="">
+            <p id="email"><%=perfil.email%></p>
+        </div>
+      </div>
+      <div class="editar-perfil">
+        <%if (logIn && username== perfil.username){%>
+          <a id="edit-perfil" href="/editar-perfil">
+            <button class="profile-edit-btn">
+              Editar Perfil
+            </button>
+          </a>
+        <%}%>
+        
+        <%if (logIn && username!= perfil.username && admin){%>
+
+          <script>
+              function openPopup() {
+                      let overlay = document.getElementById('overlay');
+                      let popup  = document.getElementById('popup');
+                      overlay.style.display = 'block';
+                      popup.style.display = 'block';
+                    }
+                    
+                    function cancelPopup() {
+                      let overlay = document.getElementById('overlay');
+                      let popup = document.getElementById('popup');
+                      overlay.style.display = 'none';
+                      popup.style.display = 'none';
+                    }
+                    
+                    function sendData() {
+                      let inputValue = document.getElementById('inputText').value;
+                      console.log('Valor do input:', inputValue);
+                      cancelPopup();
+                    }
+          </script>
+
+        
+            
+            <button type="button" onclick="openPopup()" class="profile-edit-btn">Deletar Perfil</button>
+          
+          <div id="overlay" class="overlay"></div> 
+          <div class="confirm-delete" id="popup">
+            <form method="POST" action="/deletar-user">
+              <div class="delete-container">
+                <span id="msg-delete">Quer mesmo deletar esse perfil?</span>
+                <button class="delete-btns" type="button" id="cancel-btn" onclick="cancelPopup()">Cancelar</button>
+                <input type="hidden" value="<%=perfil.id%>" name="deletar_user">
+                <button class="delete-btns" type="submit" id="delete-btn" onclick="sendData()">Deletar</button>
+              </div>
+            </form>
+          </div>
+
+          <%}%>
+      </div>
+    </div>
+    <div class="user-feed">
+      <hr id="line" size="0.5px">
+      <h3 id="publicacoes">Publicações</h3>
+      <br>
+        <div class="posts">
+          <%perfil.posts.reverse().forEach((post)=>{%>
+            <div class="post">
+              <div id="post-user-infos">
+                <div id="post-user-personal-infos">
+                  <img id="img-post" src="data:image/jpeg;base64, <%=perfil.userImg%>" alt="">
+                  <p id="post-owner"><%=perfil.username%></p>
+                  <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %> </p>
+                </div>
+                <div>
+                  <%if (logIn && username==perfil.username){%>
+                    <div class="logedInBtns">
+                      <script >
+                              function openPopup_() {
+                                var overlay = document.getElementById('overlay_');
+                                var popup  = document.getElementById('popup_');
+                                overlay.style.display = 'block';
+                                popup.style.display = 'block';
+                              }
+                              
+                              function cancelPopup_() {
+                                var overlay = document.getElementById('overlay_');
+                                var popup = document.getElementById('popup_');
+                                overlay.style.display = 'none';
+                                popup.style.display = 'none';
+                              }
+                              
+                              function sendData_() {
+                                var inputValue = document.getElementById('inputText').value;
+                                console.log('Valor do input:', inputValue);
+                                cancelPopup();
+                              }           
+                      </script>
+
+                        
+                          
+                          <!-- <button class="editPost" onclick="openPopup_()" type="button" class="trash">
+                            <img id="editPost" src="../imagens/post-edit.png" alt="">
+                          </button> -->
+                       
+                        <div id="overlay_" class="overlay_"></div>   
+                        <div class="section_" id="popup_">
+    
+                            <form action="/editar-post" method="POST">
+                                <div class="container-edit">
+                                    
+                                    <div class="content">
+                                        <div class="options">
+                                            
+                                        </div>
+                                        <div class="edit-post">
+                                            <input name="edit_post_id" type="hidden" value="<%=post.id%>">
+                                            <input name="new_conteudo" type="text" id="input-edit" value="<%=post.content%>">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="edit-btns">
+                                            <button onclick="cancelPopup_()" type="button" id="cancelar">
+                                                Cancelar
+                                            </button>
+                                
+                                              <button type="submit" id="update">
+                                                  Update 
+                                              </button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+
+
+
+                      <form action="/deletar-post" method="POST">
+                        <input type="hidden" name="post_id" value="<%= post.id%>">
+                        <button id="deletePost" type="submit" class="trash">
+                          <img src="../imagens/trash.png" alt="">
+                        </button>
+                      </form>
+                    </div>
+                      <%}%>
+                </div>
+                  </div>
+                  <div id="post-content">
+                      <p>
+                        <%=post.content%>
+                      </p>  
+              </div>
+          </div>
+          <%})%>
+          </div>
+  </div>
+  </div>
+
+  </section>
+  </body>
+</html>

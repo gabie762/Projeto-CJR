@@ -1,0 +1,86 @@
+<%- include("header.ejs", {title: "Criar Conta",logIn})%>
+    <section class="register-page">
+      <div id="register-box">
+        <form id="form" method="POST" enctype="multipart/form-data">
+        <div id="register-img">
+          <img src="../imagens/foto-perfil.png" alt="" />
+        </div>
+        <div id="img-button">
+          <div id="adicionar-img">
+              <input name="userImg" id="input-img" type="file" accept="image/png, image/jpeg, image/jpg" value="../imagens/foto-perfil.png">
+              <img id="user-img" src="../imagens/img-add.png" alt="" />
+          </div>
+          <script>
+            let img = document.getElementById("user-img");
+            let input = document.getElementById("input-img");
+            img.onclick = function() {
+              input.value = "";
+              input.click();
+            };
+
+          </script>
+        </div>
+        <br />
+        
+          <input
+            type="text"
+            class="input-box"
+            id="name-box"
+            name="nome"
+            placeholder="Nome"
+          />
+
+          <br />
+
+          <select name="genero" id="genero-box">
+            <option value="" id="genero">Gênero</option>
+            <option value="masculino" id="genero">Masculino</option>
+            <option value="feminino" id="genero">Feminino</option>
+            <option value="outro" id="genero">Outro</option>
+          </select>
+
+          <br />
+
+          <input
+            type="text"
+            class="input-box"
+            id="cargo-box"
+            name="cargo"
+            placeholder="Cargo"
+          />
+
+          <br />
+
+          <input
+            type="email"
+            class="input-box"
+            id="email-box"
+            name="email"
+            placeholder="Email"
+          />
+
+          <br />
+
+          <input
+            type="password"
+            class="input-box"
+            id="password"
+            name="password"
+            placeholder="Senha"
+          />
+          <br />
+  
+          <p>
+            Possui conta? <span><a href="/">Acesse aqui</a></span>
+          </p>
+  
+          <br />
+  
+          <button type="submit" id="register-button">Cadastrar</button>
+        </div>
+      </form>
+
+      <img class="cjr-img" src="../imagens/cjr-grande.png" alt="" />
+    </section>
+  </body>
+</html>

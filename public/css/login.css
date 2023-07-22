@@ -1,0 +1,129 @@
+.login-page {
+  background-color: #111e3e;
+  min-height: 939px;
+  padding-top: 140px;
+  padding-bottom: 192px;
+}
+
+#login-box {
+  width: 547px;
+  height: 605px;
+  position: relative;
+  margin-left: 30.972%;
+  padding: 20px 20px;
+  background: #222e50;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.style-div-input {
+  display: flex;
+  margin-bottom: 25px;
+}
+.gray-input-box {
+  background-color: #71767b;
+  width: 400px;
+  height: 59px;
+  border-radius: 15px;
+  position: relative;
+  right: 0.3rem;
+  padding-left: 15px;
+  padding-top: 20px;
+  justify-content: left;
+  display: flex;
+}
+
+#img-input {
+  width: 19px;
+  height: 19px;
+}
+
+#eye-img {
+  margin-top: 22.5px;
+  cursor: pointer;
+  right: 2rem;
+  position: relative;
+}
+
+.input-box {
+  width: 370px;
+  height: 59px;
+  border-radius: 15px;
+  background: #d9d9d9;
+  margin-bottom: 25px;
+  padding-left: 20px;
+  font-weight: 700;
+  position: absolute;
+  border: 0px;
+  left: 6.5rem;
+}
+
+.input-box::placeholder {
+  font-weight: 700;
+  font-size: 16px;
+  color: #71767b;
+}
+
+#style-div-input {
+  display: flex;
+  flex-direction: row;
+}
+
+#input-group-prepend {
+  background-color: #71767b;
+}
+
+#gray-box-input {
+  width: 249px;
+  height: 59px;
+  display: block;
+  color: #71767b;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+}
+
+#login-img {
+  width: 167.97px;
+  height: 158.59px;
+  margin-bottom: 45px;
+}
+
+#forgot-pass {
+  font-family: "Inter";
+  font-style: normal;
+  width: 151px;
+  height: 19px;
+  line-height: 19px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #d9d9d9;
+  color: #111e3e;
+}
+
+.forgot-pass {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Inter";
+  line-height: 19px;
+  text-decoration-line: underline;
+}
+
+#entrar-button {
+  background: #d9d9d9;
+  width: 283px;
+  height: 50px;
+  border-radius: 15px;
+  color: #111e3e;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: medium;
+  cursor: pointer;
+}

@@ -1,0 +1,313 @@
+*{
+    font-family: "Inter";
+}
+
+section{
+    padding-left: 27.5%;
+    padding-right: 27.5%;
+    background-color: #111e3e;
+    min-height: 939px;
+}
+
+
+
+#criar-post{
+    cursor: pointer;
+    background-color: #8bc34a;
+    color: #ffffff;
+    width: 143px;
+    height: 46px;
+    font-family: "Inter";
+    border: 0px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 12px;
+}
+
+p{
+    color:#FFFFFF;
+}
+
+
+.posts{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    border-left: solid 1px #6f6f6f;
+    border-right: solid 1px #6f6f6f;
+    padding-bottom: 32px;
+    min-height: 939px;
+    border-bottom:solid 1px #6f6f6f;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+#link-name{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#pubs{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+
+
+
+.post{
+    background-color: #222E50;
+    border-radius: 18px;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+#post-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#post-user-personal-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-post{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#post-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#created-at{
+    color:#6f6f6f;
+    font-size: 16px;
+}
+#post-content{
+    margin-left: 50px;
+}
+
+#comment-img{
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+
+
+
+
+.overlay{
+    position: fixed;
+    display:flex ;
+    
+    align-items: center;
+    align-content: center;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.section{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    
+    position: fixed;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      
+      border-radius: 5px;
+      display: none; 
+
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+
+    
+    background-color: #111E3E;
+    padding: 5%;
+    height: auto;
+    width: auto;
+   border-radius: 20px;
+   min-width: 300%;
+}
+
+
+
+button{
+    cursor: pointer;
+  }
+
+
+.post-container{
+    width: 705px;
+    height: 449px;
+    border-radius: 16px;
+    background-color: #222E50;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.post-box{
+    width: 563px;
+    height: 285px;
+    border-radius: 16px;
+    background-color: #343f5e;
+    position: absolute;
+}
+
+.post-settings{
+    position: relative;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    gap: 20px;
+    /* background-color: yellow; */
+    width: auto;
+    height: 47px;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.50);
+}
+
+.trash{
+    background-color: transparent;
+    color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+
+#trash{
+    margin-right: 15px;
+}
+
+.txt-option{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+
+.adv-option-button{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+
+/* .link-option-format{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+}
+.img-option-format{
+background-color: transparent;
+border: transparent;
+position: relative;
+left: 2%;
+} */
+
+#bold-btn{
+background-color: transparent;
+border: transparent;
+position: relative;
+left:4%;
+top: 2vh;
+}
+
+.italic-btn{
+background-color: transparent;
+border: transparent;
+position: absolute;
+left: 3%;
+top: 2vh;
+}
+
+.italic-btn{
+background-color: transparent;
+border: transparent;
+position: absolute;
+left:6%;
+top: 2vh;
+}
+
+
+#cancel-btn{
+position: relative;
+background-color: transparent;
+border-radius: 16px;
+width: 140px;
+height: 50px;
+color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+top:40%;
+left: 18%;
+border: transparent;
+}
+
+
+#conteudo-postagem{
+    background-color: #343f5e;
+    display: flex;
+    margin-top: 0;
+    top:0;
+    width: 100%;
+    height: 80%;
+    border: 0px;
+    align-items: flex-start;
+}
+
+#post-btn{
+    position: relative;
+    width: 140px;
+    height: 50px;
+    border-radius: 16px;
+    background: #8BC34A;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    top:40%;
+    left: 20%;
+    border: transparent;
+}
+
+#txt-input{
+    padding: 20px;
+    /* background-color: yellow; */
+    height: 83%;
+    width: auto;
+    position: relative;
+    overflow-y: hidden;
+    border: transparent;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "projeto-cjr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "dev": "ts-node-dev --exit-child --transpile-dev node_modules src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabie762/Projeto-CJR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabie762/Projeto-CJR/issues"
+  },
+  "homepage": "https://github.com/gabie762/Projeto-CJR#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.16.1",
+    "sharp": "^0.32.1",
+    "sqlite": "^4.2.1",
+    "sqlite3": "^5.1.6",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.16.2",
+    "@types/express": "^4.17.17",
+    "typescript": "^5.1.5"
+  }
+}

@@ -1,0 +1,392 @@
+*{
+    font-family: "Inter";
+}
+
+section{
+    padding-left: 27.5%;
+    padding-right: 27.5%;
+    background-color: #111e3e;
+    min-height: 939px;
+}
+#arrow{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+.container{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid 1px #6f6f6f;
+    min-height: 939px;
+    
+}
+
+.post-page{
+    background-color: #222E50;
+    padding-top: 15px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    
+}
+
+
+
+p{
+    color:#FFFFFF;
+}
+
+
+
+
+#pubs{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.post{
+    background-color: transparent;
+    border-top-left-radius:18px ;
+    border-top-right-radius: 18px;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+#post-user-infos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#post-personal-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+#img-post{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#post-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#created-at{
+    color:#6f6f6f;
+    font-size: 16px;
+}
+#post-content{
+    margin-left: 50px;
+}
+
+#comment-img{
+    margin-top: 20px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+
+.comment{
+    background-color: transparent;
+    padding-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    
+    
+}
+
+#b-top{
+    border-bottom: #6f6f6f 1px solid;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#comment-user-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    
+    justify-content: space-between;
+}
+
+#comment-user-personal-infos{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+}
+
+
+.overlay_{
+    position: fixed;
+    display:flex ;
+    
+    align-items: center;
+    align-content: center;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+  }
+  
+  .section_{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    padding: 40px;
+    min-width: 600px;
+    position: fixed;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #111E3E;
+      border-radius: 5px;
+      display: none;
+  
+      min-width: 400px;
+    
+  }
+  
+  
+  .container_edit{
+    display: flex;
+    flex-direction: column;
+    background-color: #111E3E;
+    padding: 40px;
+    height: auto;
+    width: auto;
+   border-radius: 20px;
+   min-width: 300%;
+   min-height: 100px;
+  }
+  
+  
+  #input-edit{
+    display: flex;
+    background-color: #222E50;
+    border-radius: 20px;
+    border: 0px;
+    min-width: 350px;
+    height: 100px;
+    align-content: flex-start;
+    align-self: center;
+    padding: 20px;
+    
+    
+  }
+  
+  
+  .edit-btns{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: right;
+  }
+  
+  #cancelar{
+    background-color: transparent;
+    color: #ffffff;
+    width: 100px;
+    height: 45px;
+    font-size: 15px;
+    font-family: 'Inter';
+    font-weight: 700;
+    border: 0px;
+    border-radius: 15px;
+  }
+  
+  #update{
+    background-color: #8BC34A;
+    color: #ffffff;
+    width: 100px;
+    height: 45px;
+    font-size: 15px;
+    font-family: 'Inter';
+    font-weight: 700;
+    border: 0px;
+    border-radius: 15px;
+  }
+  
+
+.trash{
+    background-color: transparent;
+    color: transparent;
+    border: 0px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+#trash{
+    margin-right: 15px;
+}
+
+#img-comment{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#comment-owner{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#comment-content{
+    margin-left: 50px;
+}
+
+.comment-space{
+    background-color: #19192D;
+    margin-top: 10%;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    min-height: 130px;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-btn{
+    width: 160px;
+    min-height: 45px;
+    color: #19192D;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+
+.logedInBtns{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .editPost{
+    color: transparent;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+  
+  #editPost{
+     width: 24px; 
+      height: 24px; 
+  }
+  
+  
+
+.overlay{
+    position: fixed;
+    display:flex ;
+    
+    align-items: center;
+    align-content: center;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+}
+
+.section{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    padding: 40px;
+    min-width: 600px;
+    position: fixed;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #111E3E;
+      border-radius: 5px;
+      display: none;
+
+      min-width: 400px;
+    
+    
+    
+
+}
+
+
+.container_comment{
+    display: flex;
+    flex-direction: column;
+    background-color: #111E3E;
+    padding: 40px;
+    height: auto;
+    width: auto;
+   border-radius: 20px;
+   min-width: 300%;
+   min-height: 100px;
+}
+
+
+#input-post{
+    display: flex;
+    background-color: #222E50;
+    border-radius: 20px;
+    border: 0px;
+    min-width: 350px;
+    height: 100px;
+    align-content: flex-start;
+    align-self: center;
+    padding: 20px;
+    
+    
+}
+
+
+.post-btns{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: right;
+}
+
+#cancelar{
+    background-color: transparent;
+    color: #ffffff;
+    width: 100px;
+    height: 45px;
+    font-size: 15px;
+    font-family: 'Inter';
+    font-weight: 700;
+    border: 0px;
+    border-radius: 15px;
+}
+
+#publicar{
+    background-color: #8BC34A;
+    color: #ffffff;
+    width: 100px;
+    height: 45px;
+    font-size: 15px;
+    font-family: 'Inter';
+    font-weight: 700;
+    border: 0px;
+    border-radius: 15px;
+}
