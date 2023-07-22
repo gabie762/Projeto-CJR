@@ -24,6 +24,7 @@ model User{
   posts Post[]
   comments Comments[]
   Cargo Cargo[]
+  //Likes Like[]
   
 }
 
@@ -35,6 +36,7 @@ model Post{
   updated_at DateTime @updatedAt
   created_at DateTime @default(now())
   comments Comments[]
+  //Like Like[]
 }
 
 
@@ -54,4 +56,13 @@ model Comments {
   user_id       String     
   content       String
 }
+
+// model Like {
+//   id        Int     @id @default(autoincrement())
+//   likes     Int     @default(0)
+//   post        Post     @relation(fields: [post_id], references: [id])
+//   post_id    Int
+//   user      User  @relation(fields: [user_id], references: [id])
+//   user_id   String
+// }
 

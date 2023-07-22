@@ -53,13 +53,13 @@ app.post("/", async (req, res) => {
     const isAuthenticated = req.session.authenticated 
     req.session.user = user.username
     req.session.img = user.userImg
-    console.log(req.session)
+    //console.log(req.session)
     res.redirect("/feed",201,{logIn:req.session.authenticated, username: user.username})
     //res.render("feed", {logIn:req.session.authenticated, username: user.username})
 
   } catch(err){
     console.log(err)
-    console.log(req.body)
+    //console.log(req.body)
     res.status(500).send(`error: ${err}`)
   }
 
@@ -72,15 +72,30 @@ app.get("/recuperar", (req, res) => {
 });
 
 
-app.post("/recuperar", (req, res)=>{
-  try{
-    const {nova_senha, confirma_senha}= req.body;
-    const resultado = {nova_senha, confirma_senha};
-    console.log(req.body)
-    res.send(`${JSON.stringify(resultado)} modificado com sucesso`)
-  } catch (err){
-    res.status(500).send(`Fatal: ${err}`)
-  }
+app.post("/recuperar", async (req, res)=>{
+    
+    const {login, nova_senha, confirma_senha}= req.body;
+    const resultado = {login, nova_senha, confirma_senha};
+    
+    const user = await prisma.user.findFirst({
+      where: {OR:[{username: login},{email:login}]}
+    })
+
+    if (user == undefined){
+      return res.send(`Error: ${login} not found`)
+    }
+    if (nova_senha != confirma_senha){
+      return res.send(`As senhas se diferem\nPor favor, certifique-se de que as senhas são iguais.`)
+    }
+
+    const newPssword = await prisma.user.update({
+      where: {id: user.id},
+      data: {
+        senha: nova_senha,
+      },
+    });
+    res.redirect("/")
+  
 })
 
 //Criar Conta
@@ -93,8 +108,8 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
   try {
     const {file, body} = req;
    
-    console.log(body);
-    console.log(file);
+    //console.log(body);
+    //console.log(file);
     const {nome, genero, cargo, email, password } = body;
     const resultado = { nome, genero, cargo, email, password };
   
@@ -117,7 +132,7 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     if (file != undefined){
       fs.unlinkSync(file.path);
     }
-    console.log(newUser); 
+    //console.log(newUser); 
     res.redirect("/")
     //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
   } catch (err) {
@@ -125,8 +140,8 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     
     const {file, body} = req;
     
-    console.log(body);
-    console.log(file);
+    // console.log(body);
+    // console.log(file);
     const {nome, genero, cargo, email, password } = body;
     
     const userImg=fs.readFileSync("./public/imagens/foto-perfil.png", {encoding: 'base64'})
@@ -148,7 +163,7 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
     if (file != undefined){
       fs.unlinkSync(file.path);
     }
-    console.log(newUser); 
+    // console.log(newUser); 
     res.redirect("/")
 
   }
@@ -159,21 +174,22 @@ app.post("/criar-conta", upload.single('userImg'),async (req, res) => {
 app.get("/perfil/:id", async (req, res)=>{
   let userId = req.path.split("/")[2];
   
-  const user = await prisma.user.findUnique({
+  const perfil = await prisma.user.findUnique({
     where: {id: userId},
     include: {posts:true, comments:true}
   })
-  console.log(user)
+
+  // console.log(user)
   try{
     let logIn = req.session.authenticated
     let username = req.session.user
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
-    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:user, admin: author.admin, perfil: user})
+    res.render("userProfile",{logIn:logIn, username: username, img: req.session.img, user:author, admin: author.admin, perfil: perfil})
   } catch(err){
     let logIn = false
-    res.render("userProfile",{logIn:logIn, username: null, img: null, user:null, admin: false, perfil: user})
+    res.render("userProfile",{logIn:logIn, username: null, img: null, user:null, admin: false, perfil: perfil})
   }
 })
 
@@ -185,7 +201,7 @@ app.get("/feed", async (req,res)=>{
   })
   try{
     const isAuthenticated = req.session.authenticated || false
-    console.log(req.session.authenticated)
+    // console.log(req.session.authenticated)
     let username = req.session.user
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
@@ -205,7 +221,7 @@ app.post("/feed", async (req, res)=>{
   try {
 
     let {conteudo} = req.body;
-    console.log(req.body)
+    // console.log(req.body)
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
@@ -215,7 +231,7 @@ app.post("/feed", async (req, res)=>{
         content:conteudo
       }
     })
-    console.log(newPost)
+    // console.log(newPost)
     res.redirect("/feed")
     //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
   } catch (err){
@@ -230,7 +246,6 @@ app.post("/feed", async (req, res)=>{
 app.post("/logout", async (req, res)=> {
   req.session.destroy((error) => {
     if (error) {
-      console.error("Error occurred during session destruction:", error);
       res.status(500).redirect("Internal Server Error");
     } else {
       res.redirect("/feed")
@@ -252,10 +267,10 @@ app.get("/comentarios/:id", async (req,res)=>{
     let user = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
-    console.log(post)
+    // console.log(post)
     
     const isAuthenticated = req.session.authenticated || false
-    console.log(req.session.authenticated)
+    // console.log(req.session.authenticated)
 
 
     
@@ -265,7 +280,6 @@ app.get("/comentarios/:id", async (req,res)=>{
     res.render("comentarios", {logIn:isAuthenticated, user: user, img: userImg, post:post})
   }catch(err){
     res.redirect(201,"/feed")
-
   }
 })
 
@@ -273,7 +287,6 @@ app.get("/comentarios/:id", async (req,res)=>{
 
 app.post("/comentarios/:id", async (req, res)=>{
   try {
-
     let {conteudo} = req.body;
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
@@ -289,7 +302,7 @@ app.post("/comentarios/:id", async (req, res)=>{
       data : {post_id: post.id, user_id:author.id, content: conteudo},
       include:{user:true, post:true}
     })
-    console.log(newComment)
+    // console.log(newComment)
     res.redirect("/feed" )
     //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
   } catch (err){
@@ -303,7 +316,7 @@ app.post("/comentarios/:id", async (req, res)=>{
 //Deletar Post
 app.post("/deletar-post", async (req, res)=>{
   const {post_id} = req.body;
-  console.log(post_id)
+  // console.log(post_id)
 
   try{
     const deleteComments = await prisma.comments.deleteMany({
@@ -330,7 +343,7 @@ app.post("/deletar-post", async (req, res)=>{
 //Deletar Comentario
 app.post("/deletar-comment", async (req, res)=>{
   const {comment_id} = req.body;
-  console.log(comment_id)
+  // console.log(comment_id)
 
   try{
     const deleteComments = await prisma.comments.delete({
@@ -415,16 +428,16 @@ app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
   try {
     const {file, body} = req;
    
-    console.log(body);
+    // console.log(body);
 
-    console.log(JSON.stringify(file));
+    // console.log(JSON.stringify(file));
     const perfil = await prisma.user.findUnique({
       where: {username: req.session.user},
     });
     
     const {nome, genero, cargo, email, password } = body;
     const resultado = { nome, genero, cargo, email, password };
-    console.log("FLUMINENSE")
+    
     
     const userImg = fs.readFileSync(file.path, {encoding: 'base64'})
     if (cargo==""){
@@ -440,22 +453,21 @@ app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
         gender:genero,
         email:email,
         cargo:cargo,
-        admin: false,
+        admin: perfil.admin,
       },
     });
     
-
     if (file != undefined){
       fs.unlinkSync(file.path);
     }
-    console.log(newUser); 
-    res.redirect("/feed")
+    // console.log(newUser); 
+   
     //res.status(201).send(`${JSON.stringify(newUser)} salvo com sucesso`);
   } catch (err) {
 
     
     const {file, body} = req;
-    console.log(body);
+    // console.log(body);
     
     const perfil = await prisma.user.findUnique({
       where: {username: req.session.user},
@@ -473,7 +485,7 @@ app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
         gender:genero,
         email:email,
         cargo:cargo,
-        admin: false,
+        admin: perfil.admin,
       },
     });
     
@@ -481,12 +493,10 @@ app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
     if (file != undefined){
       fs.unlinkSync(file.path);
     }
-    console.log(newUser); 
-    res.redirect("/feed")
-
+    // console.log(newUser); 
   }
+  res.redirect("/feed")
 })
-
 
 
 app.on('close', async () =>{
@@ -496,3 +506,4 @@ app.on('close', async () =>{
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
