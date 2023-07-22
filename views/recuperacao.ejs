@@ -21,7 +21,25 @@
       <div class="box-txt">
         <h3>Bem vindo de volta, Fulano! Escolha sua nova senha.</h3>
       </div>
-      <form id="form" method="POST">
+      <form id="form" method="POST" action="/recuperar">
+      <div class="logIn">
+        
+          <div>
+            <label for="login">
+              <h3 style="font-size: 16px; line-height: 19px; width:200px">Username ou E-mail</h3>
+            </label>
+            <br />
+            <input
+              type="text"
+              id="login"
+              name="login"
+              placeholder=""
+              maxlength="15"
+              required
+            />
+          </div>
+          <br />
+      </div>
       <div class="senha">
         
           <div>
