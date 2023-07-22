@@ -197,8 +197,9 @@ app.get("/perfil/:id", async (req, res)=>{
 //Feed com post aberto
 app.get("/feed", async (req,res)=>{
   const posts = await prisma.post.findMany({
-    include: {user: true}
+    include: {user: true, likes:true}
   })
+  //console.log(posts)
   try{
     const isAuthenticated = req.session.authenticated || false
     // console.log(req.session.authenticated)
@@ -212,7 +213,6 @@ app.get("/feed", async (req,res)=>{
   } catch(err){
     res.render("feed", {logIn:false, user: null, img:null, posts:posts})
   }
-  
 
 })
 
@@ -231,7 +231,9 @@ app.post("/feed", async (req, res)=>{
         content:conteudo
       }
     })
-    // console.log(newPost)
+
+
+    console.log(newPost)
     res.redirect("/feed")
     //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
   } catch (err){
@@ -494,6 +496,47 @@ app.post("/editar-perfil",  upload.single('userImg'), async (req, res)=>{
       fs.unlinkSync(file.path);
     }
     // console.log(newUser); 
+  }
+  res.redirect("/feed")
+})
+
+
+app.post("/like", async (req, res)=>{
+  const {post_liked} = req.body;
+  const user = await prisma.user.findUnique({
+    where: {username: req.session.user},
+  });
+  const post = await prisma.post.findUnique({
+    where: {id: parseInt(post_liked)},
+    include:{likes: true}
+    
+  })
+    
+    const dislike = await prisma.likes.findMany({
+      where: {user_id:user.id, post_id: post.id}
+    })
+    console.log(dislike.length)
+    if (dislike.length> 0){
+    const liked = await prisma.likes.deleteMany({
+      where:{user_id: user.id, post_id: post.id}
+    })
+    
+    const dislikePost = await prisma.post.update({
+      where: {id: post.id},
+      data: {
+        total_likes: post.total_likes-1
+      },
+    });
+  }else{
+    const liked = await prisma.likes.create({
+      data:{user_id: user.id, post_id: post.id}
+    })
+    const likedPost = await prisma.post.update({
+      where: {id: post.id},
+      data: {
+        total_likes: post.total_likes+1
+      },
+    });
   }
   res.redirect("/feed")
 })

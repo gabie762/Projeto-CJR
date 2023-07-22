@@ -195,9 +195,26 @@
                             <%=post.content%>
                         </p>  
                     </div>
-                    <a href="/comentarios/<%=post.id%>">
-                        <img id="comment-img" src="../imagens/comment.png" alt="">
-                    </a>
+                    <div class="under-content">
+                      <div id="comentarios">
+                        <a href="/comentarios/<%=post.id%>">
+                          <img id="comment-img" src="../imagens/comment.png" alt="">
+                        </a>
+                      </div>
+                      <%if (logIn){%>
+                      <div id="like">
+                        <form action="/like" id="form" method="POST">
+                        <input type="hidden" value="<%=post.id%>" name="post_liked">
+                          <button id="like-btn" type="submit">
+                            <img id="like-img" src="../imagens/like_heart__.png" alt="">
+                          </button>
+                        </form>
+                        <span>
+                          <%= post.total_likes%>
+                        </span>
+                      </div>
+                      <%}%>
+                    </div>
                 </div>
                 <%})%>
             </div>

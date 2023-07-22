@@ -100,8 +100,8 @@ p{
 }
 
 #comment-img{
-    margin-top: 20px;
-    margin-left: 50px;
+    /* margin-top: 20px; */
+    /* margin-left: 50px; */
     cursor: pointer;
 }
 
@@ -310,4 +310,32 @@ border: transparent;
     position: relative;
     overflow-y: hidden;
     border: transparent;
+}
+
+#like-btn{
+    background-color: transparent;
+    border: 0px;
+}
+
+#like-img{
+    width: 24px;
+    height: 24px;
+    color: #FFFFFF;
+}
+
+#like{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    color: white;
+}
+
+.under-content{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    gap: 20px;
+    justify-content: space-between;
 }
