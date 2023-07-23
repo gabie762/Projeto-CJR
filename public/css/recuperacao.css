@@ -19,6 +19,15 @@ h3{
     opacity: 0.7;
 }
 
+input[type=text] {
+    width: 401px;
+    height: 66px;
+    background: #D9D9D9;
+    border: 1px;
+    border-radius: 15px;
+    padding: 30px 30px;
+}
+
 input[type=password] {
     width: 401px;
     height: 66px;
@@ -40,9 +49,9 @@ button[type=submit]{
     /* Rectangle 10 */
     position: relative;
     width: 547px;
-    height: 723px;
+    height: 789px;
     left: 778px;
-    top: 85px;
+    top: 76px;
     background: #222E50;
     border-radius: 10px;
 }
@@ -55,12 +64,19 @@ button[type=submit]{
     top: 112px;
 }
 
-.senha{
+.logIn{
     position: absolute;
     width: 91px;
     height: 92.28px;
     left: 75px;
     top: 284px;
+}
+.senha{
+    position: absolute;
+    width: 91px;
+    height: 92.28px;
+    left: 75px;
+    top: 417px;
 }
 
 .confirmacao-txt{
@@ -68,7 +84,7 @@ button[type=submit]{
     width: 401px;
     height: 69.34px;
     left: 75px;
-    top: 417px;
+    top: 550px;
 }
 
 .txt-cadastro{
@@ -83,7 +99,7 @@ button[type=submit]{
     position:absolute;
     width: 215px;
     height: 19px;
-    top: 547px;
+    top: 675px;
     left: 166px;
 }
 
@@ -92,5 +108,5 @@ button[type=submit]{
     width: 283px;
     height: 50px;
     left: 132px;
-    top: 579px;
+    top: 710px;
 }

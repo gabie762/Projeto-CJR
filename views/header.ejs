@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="/css/comentarios.css" type="text/css">
     <%}else if (title=="make post"){%>
       <link rel="stylesheet" href="/css/post.css" type="text/css">
-      <%}else if (title=="Editar Perfil"){%>
-        <link rel="stylesheet" href="/css/editProfile.css" type="text/css">
-        <%}%>
+    <%}else if (title=="Editar Perfil"){%>
+      <link rel="stylesheet" href="/css/editProfile.css" type="text/css">
+    <%}%>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -66,8 +66,9 @@
               <span id="user"> - ADMIN </span>
             <%}%>
           </div>
-          
-          <img id="img-logado" src="data:image/jpeg;base64, <%=img%>"" alt="">
+          <a href="/perfil/<%=user.id%>">
+            <img id="img-logado" src="data:image/jpeg;base64, <%= user.userImg%>"" alt="">
+          </a>
 
           <form action="/logout" method="" id="form">
             <input type="hidden" name="log_out" value=false>

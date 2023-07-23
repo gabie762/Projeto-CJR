@@ -42,11 +42,11 @@ model Post{
 
 
 model Cargo{
-  id           Int      @id @default(autoincrement())
-  user         User     @relation(fields: [nome], references: [username])
-  nome         String   @unique
+  id           Int @id @default(autoincrement())
+  user         User @relation(fields: [nome], references: [username])
+  nome         String @unique
   nucleo       String 
-  createdAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
 }
 
 model Comments {
