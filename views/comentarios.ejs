@@ -17,7 +17,7 @@
                             <p id="created-at">· <%= post.created_at.getDate() %> de <%= meses[post.created_at.getMonth()] %></p>
                         </div>
 
-                        <% if (post.user.id == user.id){%>
+                        <% if (logIn && post.user.id == user.id){%>
                         
                             <div class="logedInBtns">
                                 <script >

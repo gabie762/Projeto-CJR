@@ -159,9 +159,17 @@
                 </div>
                   </div>
                   <div id="post-content">
+                    <div>
                       <p>
                         <%=post.content%>
                       </p>  
+                    </div>
+
+                      <% if (post.postImg){%>
+                        <div class="postagem-img">
+                          <img id="postagem-img" src="data:image/jpeg;base64, <%= post.postImg%>" alt="">
+                        </div>
+                      <%}%>
               </div>
           </div>
           <%})%>
