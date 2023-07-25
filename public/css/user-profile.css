@@ -234,6 +234,24 @@ section{
 
 }
 
+#post-content{
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+#postagem-img{
+  justify-self: center;
+  /* padding-left: 5%; */
+  min-width: 470px;
+  max-width: 505px;
+  min-height: 320px;
+  max-height: 400px;
+}
+
+
 .logedInBtns{
   display: flex;
   flex-direction: row;

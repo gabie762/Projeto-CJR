@@ -178,7 +178,7 @@ app.get("/perfil/:id", async (req, res)=>{
     where: {id: userId},
     include: {posts:true, comments:true}
   })
-
+  
   // console.log(user)
   try{
     let logIn = req.session.authenticated
@@ -217,28 +217,43 @@ app.get("/feed", async (req,res)=>{
 })
 
 
-app.post("/feed", async (req, res)=>{
+app.post("/feed", upload.single('post_img'), async (req, res)=>{
   try {
-
-    let {conteudo} = req.body;
-    // console.log(req.body)
+    let {file} = req.file;
+    let {post_img, conteudo} = req.body;
+    
     let author = await prisma.user.findUnique({
       where: {username: req.session.user}
     })
+    
+    const postImg = fs.readFileSync(req.file.path, {encoding: 'base64'})
+    
     const newPost = await prisma.post.create({
       data:{
-        user_id: author.id,
-        content:conteudo
+        user_id: author.id, postImg: postImg, content: conteudo
       }
     })
+    
+    if (file != undefined){
+      fs.unlinkSync(req.file.path);
+    }  
 
-
-    console.log(newPost)
     res.redirect("/feed")
     //res.status(201).send(`${JSON.stringify(newPost)} salvo com sucesso`)
   } catch (err){
-    console.log(err)
-    res.status(500).send("Fatal: error");
+      let {conteudo} = req.body;
+      // console.log(req.body)
+      let author = await prisma.user.findUnique({
+        where: {username: req.session.user}
+      })
+      const newPost = await prisma.post.create({
+        data:{
+          user_id: author.id,
+          content:conteudo
+        }
+      })
+
+      res.redirect("/feed")
   }
 })
 
@@ -281,7 +296,13 @@ app.get("/comentarios/:id", async (req,res)=>{
     
     res.render("comentarios", {logIn:isAuthenticated, user: user, img: userImg, post:post})
   }catch(err){
-    res.redirect(201,"/feed")
+    let postId = parseInt(req.path.split("/")[2]);
+    const post = await prisma.post.findUnique({
+      where: {id: postId},
+      include: {user:true, comments:{include: {user: true}}}
+    })
+    
+    res.render("comentarios", {logIn:false, user: null, img: null, post:post})
   }
 })
 
@@ -515,7 +536,7 @@ app.post("/like", async (req, res)=>{
     const dislike = await prisma.likes.findMany({
       where: {user_id:user.id, post_id: post.id}
     })
-    console.log(dislike.length)
+    //console.log(dislike.length)
     if (dislike.length> 0){
     const liked = await prisma.likes.deleteMany({
       where:{user_id: user.id, post_id: post.id}

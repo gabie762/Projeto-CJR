@@ -97,7 +97,12 @@ p{
 }
 #post-content{
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
+
+
 
 #comment-img{
     /* margin-top: 20px; */
@@ -106,8 +111,23 @@ p{
 }
 
 
+#post_img{
+    height: 0px;
+    width: 0px;
+}
 
+.postagem-img{
+    border-radius: 10px;
+}
 
+#postagem-img{
+    justify-self: center;
+    /* padding-left: 5%; */
+    min-width: 450px;
+    max-width: 505px;
+    min-height: 320px;
+    max-height: 400px;
+}
 
 .overlay{
     position: fixed;
